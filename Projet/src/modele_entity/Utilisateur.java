@@ -1,77 +1,64 @@
 package modele_entity;
 
-public class Utilisateur {
-	private String nom;
-	private String login;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Utilisateur implements Observer {
+	private int id;
+	private String pseudo;
+	private String email;
 	private String mdp;
 
-	public Utilisateur(String nom, String login, String mdp){
-		this.nom = nom;
-		this.login = login;
+	public Utilisateur(String pseudo, String email, String mdp){
+		this.pseudo = pseudo;
+		this.email = email;
 		this.mdp = mdp;
-	}	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((mdp == null) ? 0 : mdp.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Utilisateur other = (Utilisateur) obj;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
-			return false;
-		if (mdp == null) {
-			if (other.mdp != null)
-				return false;
-		} else if (!mdp.equals(other.mdp))
-			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		return true;
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	/**
-	 * @return the nom
+	 * @return the pseudo
 	 */
-	public String getNom() {
-		return nom;
+	public String getPseudo() {
+		return pseudo;
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param pseudo the pseudo to set
 	 */
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 	/**
-	 * @return the login
+	 * @return the email
 	 */
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 	/**
-	 * @param login the login to set
+	 * @param email the email to set
 	 */
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	/**
 	 * @return the mdp
