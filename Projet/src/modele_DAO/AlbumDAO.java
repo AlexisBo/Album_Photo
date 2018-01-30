@@ -9,7 +9,7 @@ public class AlbumDAO {
 	
 	public AlbumDAO() {
 		try {
-			connection = BDConnexion.getConnection();
+			connection = BDConnexion.getConnexion();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

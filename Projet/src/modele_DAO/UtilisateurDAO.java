@@ -7,11 +7,11 @@ import modele_entity.Utilisateur;
 import outils.BDConnexion;
 
 public class UtilisateurDAO {
-	Connection connection;
+	Connection connexion;
 
 	public UtilisateurDAO() {
 		try {
-			connection = BDConnexion.getConnection();
+			connexion = BDConnexion.getConnexion();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,7 +28,7 @@ public class UtilisateurDAO {
 
 		try {
 			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE login=? AND Mdp=?;";
-			PreparedStatement requeteSt = connection.prepareStatement(requetePickUser);
+			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
 			requeteSt.setString(1, log);
 			requeteSt.setString(2, pass);
 			utilisateur = (Utilisateur) requeteSt.executeQuery();

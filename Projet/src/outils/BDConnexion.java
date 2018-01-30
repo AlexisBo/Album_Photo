@@ -5,15 +5,15 @@ import java.sql.*;
 public class BDConnexion {
 	private static String driver ;
 	private static String url, login, passwd ;
-	private static Connection connection ;
+	private static Connection connexion ;
 	
 	static { 
 		try {driver = "oracle.jdbc.OracleDriver";
 			Class.forName(driver);
-			url = "jdbc:oracle:thin:@vs-oracle2:1521:ORCL";
+			url = "jdbc:mysql://localhost:3306:bdd_album_photo";
 			login = "GR1U5";
 			passwd = "GR1U5";
-			connection = DriverManager.getConnection(url,login,passwd);
+			connexion = DriverManager.getConnection(url,login,passwd);
 		}
 		catch (Exception e) {
 			// problème, on arrête le serveur
@@ -22,8 +22,8 @@ public class BDConnexion {
 		}
 	}
 	
-	public static Connection getConnection() {
-		return connection;
+	public static Connection getConnexion() {
+		return connexion;
 	}
 	
 }

@@ -2,7 +2,6 @@ package controleur;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +23,7 @@ public class C_GestionAlbum extends HttpServlet {
 		albumDAO = new AlbumDAO();
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String operation = request.getParameter("operation");
 
@@ -34,16 +32,14 @@ public class C_GestionAlbum extends HttpServlet {
 			String login = request.getParameter("login");
 			String pass = request.getParameter("pass");
 			Utilisateur u = utilisateurDAO.seConnecter(login, pass);
-			
+
 			HttpSession session = request.getSession();
 
-	        if ( u != null ) {
-	            session.setAttribute( "utilistauer", u );
-	        }
-			
-			RequestDispatcher dispatch = request
-					.getRequestDispatcher("/www/Album.html");
-			dispatch.forward(request, response);
+			if (u != null) {
+				session.setAttribute("utilisateur", u);
+			}
+
+			this.getServletContext().getRequestDispatcher("/www/Album.xhtml").forward(request, response);
 		}
 	}
 }
