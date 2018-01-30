@@ -2,6 +2,7 @@ package modele_entity;
 
 public class Commentaire {
 
+	private int id;
 	private String commentaire;
 	private int evaluation;
 
@@ -10,6 +11,14 @@ public class Commentaire {
 		this.evaluation = evaluation;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
+	
 	public String getCommentaire() {
 		return this.commentaire;
 	}
