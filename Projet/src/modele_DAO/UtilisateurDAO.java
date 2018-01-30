@@ -3,13 +3,13 @@ package modele_DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import modele_entity.Utilisateur;
 import outils.BDConnexion;
 
 public class UtilisateurDAO {
 	Connection connection;
 
-	public MediaDAO() {
+	public UtilisateurDAO() {
 		try {
 			connection = BDConnexion.getConnection();
 		} catch (Exception e) {
@@ -23,37 +23,18 @@ public class UtilisateurDAO {
 	 *            log, String pswd]
 	 * @return vrai si l'utilisateur existe
 	 */
-	public boolean seConnecter(String log, String pswd) {
+	public Utilisateur seConnecter(String log, String pass) {
 		Utilisateur utilisateur = null;
-		/*
-		 * try { //ça c'est avec ta methode, mais moi j'ai créé une liste pr eviter
-		 * ça utilisateur = persistance.rechercherUser(log, pswd); } catch
-		 * (SQLException e) { e.printStackTrace(); } if(utilisateur == null){ return
-		 * false; } return true;
-		 */
 
-		// Avec ma liste:
-		int index = listeUsers.indexOf(new Utilisateur(null, log, pswd));
-		if (index != -1) {
-			utilisateur = listeUsers.get(index);
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @brief Retirer (supprimer) un media.
-	 * @param [int
-	 *            idMedia]
-	 */
-	public void retirerMedia(int idMedia) {
 		try {
-			String requeteRechAppViaType = "DELETE FROM MEDIA WHERE Numero = ?";
-			PreparedStatement requeteSt = connection.prepareStatement(requeteRechAppViaType);
-			requeteSt.setInt(1, idMedia);
-			requeteSt.executeUpdate();
+			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE login=? AND Mdp=?;";
+			PreparedStatement requeteSt = connection.prepareStatement(requetePickUser);
+			requeteSt.setString(1, log);
+			requeteSt.setString(2, pass);
+			utilisateur = (Utilisateur) requeteSt.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return utilisateur;
 	}
 }

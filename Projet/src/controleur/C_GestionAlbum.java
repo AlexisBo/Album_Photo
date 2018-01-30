@@ -1,25 +1,27 @@
 package controleur;
 
-import java.io.*;
-import java.util.List;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import modele_DAO.GestionAlbum;
+import modele_DAO.AlbumDAO;
+import modele_DAO.UtilisateurDAO;
+import modele_entity.Utilisateur;
 
 public class C_GestionAlbum extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	UtilisateurDAO utilisateurDAO;
-	MediaDAO mediaDAO;
+	AlbumDAO albumDAO;
 
 	public void init() {
 		utilisateurDAO = new UtilisateurDAO();
-		mediaDAO = new MediaDAO();
+		albumDAO = new AlbumDAO();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,41 +33,16 @@ public class C_GestionAlbum extends HttpServlet {
 		if (operation.equals("seConnecter")) {
 			String login = request.getParameter("login");
 			String pass = request.getParameter("pass");
-			boolean ec = utilisateurDAO.seConnecter(login, pass);
-			request.setAttribute("EtatConnexion", ec);
-			RequestDispatcher dispatch = request
-					.getRequestDispatcher("/www/Accueil.html");
-			dispatch.forward(request, response);
-		}
+			Utilisateur u = utilisateurDAO.seConnecter(login, pass);
+			
+			HttpSession session = request.getSession();
 
-		// Rechercher media par dossier.
-		if (operation.equals("rechercherMediaByFolder")) {
-			String folderName = request.getParameter("folderName");
-			List<Media> medias = mediaDAO.rechercherMediaByFolder(folderName);
-			request.setAttribute("Medias", medias);
+	        if ( u != null ) {
+	            session.setAttribute( "utilistauer", u );
+	        }
+			
 			RequestDispatcher dispatch = request
-					.getRequestDispatcher("/www/.jsp");
-			dispatch.forward(request, response);
-		}
-
-		// Mettre en ligne un media.
-		if (operation.equals("ajouterMedia")) {
-			String idMedia = request.getParameter("idMedia");
-			/** ... **/
-			String dossierParent = request.getParameter("dossierParent");
-			Media media = mediaDAO.ajouterMedia(idMedia, ..., dossierParent);
-			request.setAttribute("Media", media);
-			RequestDispatcher dispatch = request
-					.getRequestDispatcher("/www/.jsp");
-			dispatch.forward(request, response);
-		}
-
-		// Retirer (supprimer) un media.
-		if (operation.equals("retirerMedia")) {
-			String idMedia = request.getParameter("idMedia");
-			mediaDAO.retirerMedia(Integer.parseInt(idMedia));
-			RequestDispatcher dispatch = request
-					.getRequestDispatcher("/www/.jsp");
+					.getRequestDispatcher("/www/Album.html");
 			dispatch.forward(request, response);
 		}
 	}
