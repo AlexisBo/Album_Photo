@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import outils.BDConnexion;
 
-public class MediaDAO {
+public class UtilisateurDAO {
 	Connection connection;
 
 	public MediaDAO() {
