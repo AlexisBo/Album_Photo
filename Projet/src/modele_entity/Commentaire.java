@@ -3,18 +3,26 @@ package modele_entity;
 public class Commentaire {
 
 	private String commentaire;
-	private enum <String> evaluation;
+	private int evaluation;
 
-	public Commentaire(String commentaire, String evaluation){
+	public Commentaire(String commentaire, int evaluation){
 		this.commentaire = commentaire;
 		this.evaluation = evaluation;
 	}
 
 	public String getCommentaire() {
-		return this.lien;
+		return this.commentaire;
 	}
 
 	public void setCommentaire(String commentaire){
 		this.commentaire = commentaire;
+	}
+
+	public int getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(int evaluation) {
+		this.evaluation = evaluation;
 	}
 }
