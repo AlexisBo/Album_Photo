@@ -2,11 +2,11 @@ package modele_entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
-public class Album implements Observable {
+public class Album extends Observable {
 	private int id;
 	private String nom;
 	private String description;
@@ -19,22 +19,6 @@ public class Album implements Observable {
 		this.description = description;
 		this.idAdmin = idAdmin;
 		this.viewers = new ArrayList<>();
-	}
-
-	@Override
-	public void addListener(InvalidationListener arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeListener(InvalidationListener arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void updateAllObservable() {
-		
 	}
 
 	public int getId() {
