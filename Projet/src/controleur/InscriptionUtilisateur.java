@@ -1,6 +1,7 @@
 package controleur;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +28,12 @@ public class InscriptionUtilisateur extends HttpServlet {
 
 		// Gestion de la connexion
 		if (operation.equals("inscription")) {
-			String login = request.getParameter("login");
-			String pass = request.getParameter("pass");
-			Utilisateur u = utilisateurDAO.seConnecter(login, pass);
+			String pseudo = request.getParameter("pseudo");
+			String email = request.getParameter("email");
+			String mdp = request.getParameter("mdp");
+			String telephone = request.getParameter("telephone");
+			//Date dateNaissance = request.getParameter("dateNaissance");
+			Utilisateur u = utilisateurDAO.sInscrire(pseudo, email, mdp, telephone/*, dateNaissance*/);
 
 			HttpSession session = request.getSession();
 
@@ -37,7 +41,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			this.getServletContext().getRequestDispatcher("/www/Album.xhtml").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/www/album.xhtml").forward(request, response);
 		}
 	}
 }

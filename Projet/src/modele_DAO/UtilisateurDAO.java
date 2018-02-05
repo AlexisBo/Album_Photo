@@ -37,4 +37,25 @@ public class UtilisateurDAO {
 		}
 		return utilisateur;
 	}
+
+	public Utilisateur sInscrire(String pseudo, String email, String mdp, String telephone/* , Date dateNaissance */) {
+		Utilisateur utilisateur = null;
+
+		try {
+//			String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone, dateNaissance) VALUES (?, ?, ?, ?, ?);";
+			String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);";
+
+			PreparedStatement requeteSt = connexion.prepareStatement(requeteAddUser);
+
+			requeteSt.setString(1, pseudo);
+			requeteSt.setString(2, email);
+			requeteSt.setString(3, mdp);
+			requeteSt.setString(4, telephone);
+			// requeteSt.setString(5, dateNaissance);
+			utilisateur = (Utilisateur) requeteSt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
 }

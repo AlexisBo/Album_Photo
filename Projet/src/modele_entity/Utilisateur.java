@@ -1,5 +1,6 @@
 package modele_entity;
 
+import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,11 +9,15 @@ public class Utilisateur implements Observer {
 	private String pseudo;
 	private String email;
 	private String mdp;
+	private String telephone;
+	private Date dateNaissance;
 
-	public Utilisateur(String pseudo, String email, String mdp){
+	public Utilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance){
 		this.pseudo = pseudo;
 		this.email = email;
 		this.mdp = mdp;
+		this.telephone =telephone;
+		this.dateNaissance = dateNaissance;
 	}
 
 	@Override
@@ -71,5 +76,21 @@ public class Utilisateur implements Observer {
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 }

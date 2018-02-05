@@ -37,7 +37,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			this.getServletContext().getRequestDispatcher("/www/Album.xhtml").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/www/album.xhtml").forward(request, response);
 		}
 	}
 }
