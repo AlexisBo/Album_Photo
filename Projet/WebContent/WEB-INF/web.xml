@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
+	<welcome-file-list>
+		<welcome-file>www/index.jsp</welcome-file>
+	</welcome-file-list>
+
 	<servlet>
 		<servlet-name>ConnexionUtilisateur</servlet-name>
 		<servlet-class>controleur.ConnexionUtilisateur</servlet-class>
@@ -8,7 +12,7 @@
 		<servlet-name>InscriptionUtilisateur</servlet-name>
 		<servlet-class>controleur.InscriptionUtilisateur</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ConnexionUtilisateur</servlet-name>
 		<url-pattern>/connexion</url-pattern>
