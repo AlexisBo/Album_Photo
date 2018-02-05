@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import modele_DAO.AlbumDAO;
 import modele_DAO.UtilisateurDAO;
 import modele_entity.Utilisateur;
 
-public class C_GestionAlbum extends HttpServlet {
+public class InscriptionUtilisateur extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	UtilisateurDAO utilisateurDAO;
-	AlbumDAO albumDAO;
 
 	public void init() {
 		utilisateurDAO = new UtilisateurDAO();
-		albumDAO = new AlbumDAO();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +26,7 @@ public class C_GestionAlbum extends HttpServlet {
 		String operation = request.getParameter("operation");
 
 		// Gestion de la connexion
-		if (operation.equals("seConnecter")) {
+		if (operation.equals("inscription")) {
 			String login = request.getParameter("login");
 			String pass = request.getParameter("pass");
 			Utilisateur u = utilisateurDAO.seConnecter(login, pass);

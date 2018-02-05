@@ -8,11 +8,11 @@ public class BDConnexion {
 	private static Connection connexion ;
 	
 	static { 
-		try {driver = "oracle.jdbc.OracleDriver";
+		try {driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			url = "jdbc:mysql://localhost:3306:bdd_album_photo";
-			login = "GR1U5";
-			passwd = "GR1U5";
+			login = "root";
+			passwd = "";
 			connexion = DriverManager.getConnection(url,login,passwd);
 		}
 		catch (Exception e) {

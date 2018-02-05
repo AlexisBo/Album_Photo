@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>ConnexionUtilisateur</servlet-name>
+		<servlet-class>controleur.ConnexionUtilisateur</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InscriptionUtilisateur</servlet-name>
+		<servlet-class>controleur.InscriptionUtilisateur</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ConnexionUtilisateur</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InscriptionUtilisateur</servlet-name>
+		<url-pattern>/inscription</url-pattern>
+	</servlet-mapping>
+</web-app>
