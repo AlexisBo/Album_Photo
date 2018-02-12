@@ -63,10 +63,15 @@ public class InscriptionUtilisateur extends HttpServlet {
 		String operation = request.getParameter("operation");
 		String chemin = "/Album_Photo/Projet/index.html";
 		
-		if (operation.equals("test")) {			
-			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
-		}
+		if (operation.equals("test")) {	
+			Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
 
-		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
+			HttpSession session = request.getSession();
+
+			if (u != null) {
+				session.setAttribute("utilisateur", u);
+			}
+			
+		}
 	}
 }
