@@ -12,6 +12,7 @@ public class Album extends Observable {
 	private String description;
 	private int idAdmin;
 	private List<Utilisateur> viewers;
+	private List<Media> medias;
 	
 	public Album(String nom, String description, int idAdmin) {
 		super();
@@ -19,6 +20,7 @@ public class Album extends Observable {
 		this.description = description;
 		this.idAdmin = idAdmin;
 		this.viewers = new ArrayList<>();
+		this.medias = new ArrayList<>();
 	}
 
 	public int getId() {
@@ -59,6 +61,14 @@ public class Album extends Observable {
 
 	public void setViewers(List<Utilisateur> viewers) {
 		this.viewers = viewers;
+	}
+
+	public List<Media> getMedias() {
+		return medias;
+	}
+
+	public void setMedias(List<Media> medias) {
+		this.medias = medias;
 	}
 
 }
