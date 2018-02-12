@@ -1,1 +1,0 @@
-<jsp:forward page="/www/accueil.xhtml"></jsp:forward>
