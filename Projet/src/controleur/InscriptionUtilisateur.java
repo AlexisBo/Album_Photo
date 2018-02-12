@@ -41,7 +41,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			this.getServletContext().getRequestDispatcher("/www/album.xhtml").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/Album_Photo/Projet/WebContent/www/album.html").forward(request, response);
 		}
 	}
 }
