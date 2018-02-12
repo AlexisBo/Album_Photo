@@ -1,5 +1,8 @@
 package modele_entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Media {
 	
 	private int id;
