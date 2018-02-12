@@ -48,7 +48,7 @@
 							<h3 class="pb-3">Inscrivez-vous</h3>
 							<form method="get" action="inscription">
 								<input class="form-control" type="hidden" value="inscription"
-									id="operation">
+									id="operation" name="operation">
 								<div class="form-group">
 									<label>Pseudo</label> <input class="form-control"
 										placeholder="Votre pseudo" name="pseudo">

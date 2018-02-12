@@ -46,7 +46,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se connecter</h1>
 						<form class="py-3" method="get" action="connexion">
-							<input class="form-control" type="hidden" value="connexion" id="operation">
+							<input class="form-control" type="hidden" value="connexion" id="operation" name="operation">
 
 							<div class="form-group" style="font-size: 30px">
 								<label>Email address</label> <input type="email" name="email"

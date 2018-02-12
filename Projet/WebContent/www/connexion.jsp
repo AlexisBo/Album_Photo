@@ -43,7 +43,7 @@
 							connecter</h1>
 						<form class="py-3" method="get" action="connexion">
 							<input class="form-control" type="hidden" value="connexion"
-								id="operation">
+								id="operation" name="operation">
 
 							<div class="form-group" style="font-size: 30px">
 								<label>Email address</label> <input type="email" name="email"
