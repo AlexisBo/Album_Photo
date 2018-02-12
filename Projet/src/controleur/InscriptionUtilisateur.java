@@ -24,8 +24,9 @@ public class InscriptionUtilisateur extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//String operation = request.getParameter("operation");
+		String operation = request.getParameter("operation");
 		String chemin = "/Album_Photo/Projet/index.html";
+		
 		// Gestion de la connexion
 		if (operation.equals("inscription")) {
 			String pseudo = request.getParameter("pseudo");
@@ -44,7 +45,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 		}
 		
 		if (operation.equals("test")) {
-			/*Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
+			Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
 
 			HttpSession session = request.getSession();
 
@@ -52,7 +53,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 			
-			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";*/
+			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
