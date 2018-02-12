@@ -5,10 +5,12 @@ public class Media {
 	private int id;
 	private String lien;
 	private String description;
+	private List<Commentaire> commentaires;
 
 	public Media(String lien, String description){
 		this.lien = lien;
 		this.description = description;
+		this.commentaires = new ArrayList<>();
 	}
 
 
@@ -34,5 +36,13 @@ public class Media {
 
 	public void setDescription(String description){
 		this.description = description;
+	}
+
+	public List<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(List<Commentaire> commentaires) {
+		this.commentaires = commentaires;
 	}
 }
