@@ -16,7 +16,7 @@ public class Utilisateur implements Observer {
 		this.pseudo = pseudo;
 		this.email = email;
 		this.mdp = mdp;
-		this.telephone =telephone;
+		this.telephone = telephone;
 		this.dateNaissance = dateNaissance;
 	}
 
