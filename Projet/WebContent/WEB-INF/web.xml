@@ -23,6 +23,6 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>test</servlet-name>
-		<url-pattern>/test</url-pattern>
+		<url-pattern>/connexion_test.jsp</url-pattern>
 	</servlet-mapping>
 </web-app>
