@@ -58,4 +58,18 @@ public class UtilisateurDAO {
 		}
 		return utilisateur;
 	}
+
+	public Utilisateur getByPseudo(String pseudo) {
+		Utilisateur utilisateur = null;
+		
+		try {
+			String requetePickUser = "SELECT * FROM Utilisateur u WHERE pseudo=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			requeteSt.setString(1, pseudo);
+			utilisateur = (Utilisateur) requeteSt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
 }

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page import="modele_entity.Utilisateur" %>
+
+<% 
+	Utilisateur u = (Utilisateur) request.getAttribute("utilisateur");
+%>
+
 <html>
 
 <head>
@@ -7,11 +12,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="WebContent/www/style/accueil.css"
-	type="text/css">
+<link rel="stylesheet" href="style/Connexion.css" type="text/css">
 </head>
 
-<body class="bg-light">
+<body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
 		<div class="container">
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -33,36 +37,35 @@
 			</div>
 		</div>
 	</nav>
-	<div class="text-center h-100 py-5 opaque-overlay"
-		style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_event.jpg&quot;);">
-		<div class="container py-5">
-			<div class="row">
-				<div class="col-md-12 text-white py-5">
-					<h1 class="mb-4 display-2 text-dark">
-						<b>Bienvenue sur Fotoen !</b>
-					</h1>
-					<p style="font-size: 25px;" class="py-3 text-dark">
-						Fotoen est un site d'album photo permettant de partager ses photos
-						avec ses amis. <br>Pour commencer, connectez-vous ou
-						inscrivez-vous en cliquant ci-dessous.
-					</p>
-					<form method="get" action="test">
-						<input class="form-control" type="hidden" value="test"
-							id="operation">
-						<center>
-							<a href="/Album_Photo/Projet/WebContent/www/connexion.jsp"
-								class="btn btn-lg btn-secondary mx-3">Connexion</a> <a
-								href="/Album_Photo/Projet/WebContent/www/inscription.jsp"
-								class="btn btn-lg btn-primary my-5">Inscription</a>
-						</center>
-						<button type="submit" class="btn mt-2 btn-outline-dark">S'inscrire</button>
-					</form>
-					form>
+	<div class="py-5 text-white opaque-overlay"
+		style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);">
+		<div class="container">
+			<div class="row my-5">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<center>
+						<h1 class="text-gray-dark" style="font-size: 60px">Se connecter</h1>
+						<form class="py-3" method="get" action="connexion">
+							<input class="form-control" type="hidden" value="connexion" id="operation">
+
+							<div class="form-group" style="font-size: 30px">
+								<label>Email address</label> <input type="email" name="email"
+									class="form-control" placeholder=<%= u.getEmail() %>>
+							</div>
+							<div class="form-group" style="font-size: 30px">
+								<label>Password</label> <input type="password" name="password"
+									class="form-control" placeholder=<%= u.getMdp() %>>
+							</div>
+							<button type="submit" class="btn btn-primary"
+								style="font-size: 20px">Connexion</button>
+							&lt;
+						</form>
+					</center>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="bg-dark text-white py-2">
+	<div class="bg-dark text-white py-0">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
@@ -75,12 +78,12 @@
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 	<pingendo onclick="window.open('https://pingendo.com/', '_blank')"
 		style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:180px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">By
