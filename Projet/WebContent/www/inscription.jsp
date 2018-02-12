@@ -46,7 +46,7 @@
 					<div class="card">
 						<div class="card-body p-5">
 							<h3 class="pb-3">Inscrivez-vous</h3>
-							<form method="get" action="InscriptionUtilisateur">
+							<form method="get" action="inscription">
 								<input class="form-control" type="hidden" value="inscription"
 									id="operation">
 								<div class="form-group">
