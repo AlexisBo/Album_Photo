@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Media {
-	
+
+
 	private int id;
 	private String lien;
 	private String description;
+	private Utilisateur utilisateur;
 	private List<Commentaire> commentaires;
-
-	public Media(String lien, String description){
+	
+	public Media(String lien, String description, Utilisateur utilisateur) {
 		this.lien = lien;
 		this.description = description;
+		this.utilisateur = utilisateur;
 		this.commentaires = new ArrayList<>();
 	}
-
 
 	public int getId() {
 		return this.id;
@@ -47,5 +49,15 @@ public class Media {
 
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
+	}
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 }

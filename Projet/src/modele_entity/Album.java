@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import javafx.beans.InvalidationListener;
-
 public class Album extends Observable {
 	private int id;
 	private String nom;
@@ -15,7 +13,6 @@ public class Album extends Observable {
 	private List<Media> medias;
 	
 	public Album(String nom, String description, int idAdmin) {
-		super();
 		this.nom = nom;
 		this.description = description;
 		this.idAdmin = idAdmin;
