@@ -25,7 +25,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String operation = request.getParameter("operation");
-		String chemin = "/Album_Photo/Projet/index.html";
+		//String chemin = "/Album_Photo/Projet/index.html";
 		
 		// Gestion de la connexion
 		if (operation.equals("inscription")) {
@@ -41,7 +41,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 			if (u != null) {
 				session.setAttribute("utilisateur", u);
 			}
-			chemin = "/Album_Photo/Projet/WebContent/www/album_listing.jsp";
+			//chemin = "/Album_Photo/Projet/WebContent/www/album_listing.jsp";
 		}
 		
 		if (operation.equals("test")) {
@@ -53,25 +53,9 @@ public class InscriptionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 			
-			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
+			//chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
 		}
 
-		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
-	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String operation = request.getParameter("operation");
-		String chemin = "/Album_Photo/Projet/index.html";
-		
-		if (operation.equals("test")) {	
-			Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
-
-			HttpSession session = request.getSession();
-
-			if (u != null) {
-				session.setAttribute("utilisateur", u);
-			}
-			
-		}
+		//this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
 	}
 }

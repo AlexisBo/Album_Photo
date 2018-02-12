@@ -19,7 +19,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<url-pattern>/inscription</url-pattern>
+		<url-pattern>/Album_Photo/Projet/WebContent/www/album_listing.jsp</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>test</servlet-name>
