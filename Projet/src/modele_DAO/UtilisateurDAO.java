@@ -23,14 +23,14 @@ public class UtilisateurDAO {
 	 *            log, String pswd]
 	 * @return vrai si l'utilisateur existe
 	 */
-	public Utilisateur seConnecter(String log, String pass) {
+	public Utilisateur seConnecter(String email, String password) {
 		Utilisateur utilisateur = null;
 
 		try {
-			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE login=? AND Mdp=?;";
+			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE email=? AND mdp=?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setString(1, log);
-			requeteSt.setString(2, pass);
+			requeteSt.setString(1, email);
+			requeteSt.setString(2, password);
 			utilisateur = (Utilisateur) requeteSt.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();

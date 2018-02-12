@@ -27,9 +27,9 @@ public class ConnexionUtilisateur extends HttpServlet {
 
 		// Gestion de la connexion
 		if (operation.equals("connexion")) {
-			String login = request.getParameter("login");
-			String pass = request.getParameter("pass");
-			Utilisateur u = utilisateurDAO.seConnecter(login, pass);
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			Utilisateur u = utilisateurDAO.seConnecter(email, password);
 
 			HttpSession session = request.getSession();
 
@@ -37,7 +37,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			this.getServletContext().getRequestDispatcher("/www/album.xhtml").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/Album_Photo/Projet/WebContent/www/album_listing.jsp").forward(request, response);
 		}
 	}
 }

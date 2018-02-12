@@ -19,8 +19,7 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand"
-				href="/Album_Photo/Projet/index.html"><i
+			<a class="navbar-brand" href="/Album_Photo/Projet/index.html"><i
 				class="fa d-inline fa-lg fa-cloud"></i>&nbsp;<b>Fotoen</b></a>
 			<div class="collapse navbar-collapse text-center justify-content-end"
 				id="navbar2SupportedContent">
@@ -42,7 +41,10 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecter</h1>
-						<form class="py-3" method="post" action="https://formspree.io/">
+						<form class="py-3" method="get" action="connexion">
+							<input class="form-control" type="hidden" value="connexion"
+								id="operation">
+
 							<div class="form-group" style="font-size: 30px">
 								<label>Email address</label> <input type="email" name="email"
 									class="form-control" placeholder="Enter email">
