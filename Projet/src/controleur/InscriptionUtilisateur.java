@@ -45,13 +45,13 @@ public class InscriptionUtilisateur extends HttpServlet {
 		}
 		
 		if (operation.equals("test")) {
-//			Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
-//
-//			HttpSession session = request.getSession();
-//
-//			if (u != null) {
-//				session.setAttribute("utilisateur", u);
-//			}
+			Utilisateur u = (Utilisateur) utilisateurDAO.getByPseudo("admin");
+
+			HttpSession session = request.getSession();
+
+			if (u != null) {
+				session.setAttribute("utilisateur", u);
+			}
 			
 			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
 		}
@@ -60,6 +60,13 @@ public class InscriptionUtilisateur extends HttpServlet {
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		doGet(request, response);
+		String operation = request.getParameter("operation");
+		String chemin = "/Album_Photo/Projet/index.html";
+		
+		if (operation.equals("test")) {			
+			chemin = "/Album_Photo/Projet/WebContent/www/connexion_test.jsp";
+		}
+
+		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
 	}
 }

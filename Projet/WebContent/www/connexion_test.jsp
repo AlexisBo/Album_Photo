@@ -43,24 +43,24 @@
 			<div class="row my-5">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<center>
-						<h1 class="text-gray-dark" style="font-size: 60px">Se connecter</h1>
-						<form class="py-3" method="get" action="connexion">
-							<input class="form-control" type="hidden" value="connexion" id="operation">
+<!-- 					<center> -->
+<!-- 						<h1 class="text-gray-dark" style="font-size: 60px">Se connecter</h1> -->
+<!-- 						<form class="py-3" method="get" action="connexion"> -->
+<!-- 							<input class="form-control" type="hidden" value="connexion" id="operation"> -->
 
-							<div class="form-group" style="font-size: 30px">
-								<label>Email address</label> <input type="email" name="email"
-									class="form-control" placeholder=<%= u.getEmail() %>>
-							</div>
-							<div class="form-group" style="font-size: 30px">
-								<label>Password</label> <input type="password" name="password"
-									class="form-control" placeholder=<%= u.getMdp() %>>
-							</div>
-							<button type="submit" class="btn btn-primary"
-								style="font-size: 20px">Connexion</button>
-							&lt;
-						</form>
-					</center>
+<!-- 							<div class="form-group" style="font-size: 30px"> -->
+<!-- 								<label>Email address</label> <input type="email" name="email" -->
+<%-- 									class="form-control" placeholder=<%= u.getEmail() %>> --%>
+<!-- 							</div> -->
+<!-- 							<div class="form-group" style="font-size: 30px"> -->
+<!-- 								<label>Password</label> <input type="password" name="password" -->
+<%-- 									class="form-control" placeholder=<%= u.getMdp() %>> --%>
+<!-- 							</div> -->
+<!-- 							<button type="submit" class="btn btn-primary" -->
+<!-- 								style="font-size: 20px">Connexion</button> -->
+<!-- 							&lt; -->
+<!-- 						</form> -->
+<!-- 					</center> -->
 				</div>
 			</div>
 		</div>
