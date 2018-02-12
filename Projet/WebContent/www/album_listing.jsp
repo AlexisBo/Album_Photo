@@ -19,14 +19,14 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="#"><i
+			<a class="navbar-brand" href="/Album_Photo/Projet/index.html"><i
 				class="fa d-inline fa-lg fa-cloud"></i>&nbsp;<b>Fotoen</b></a>
 			<div class="collapse navbar-collapse text-center justify-content-end"
 				id="navbar2SupportedContent">
-				<a href="Connexion.html"
+				<a href="/Album_Photo/Projet/WebContent/www/connexion.jsp"
 					class="btn navbar-btn ml-2 text-white btn-secondary"><i
 					class="fa d-inline fa-lg fa-user-circle-o"></i> Connexion</a> <a
-					href="Inscription.html"
+					href="/Album_Photo/Projet/WebContent/www/inscription.jsp"
 					class="btn navbar-btn ml-2 text-white btn-secondary">
 					Inscription</a>
 			</div>
