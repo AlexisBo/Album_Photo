@@ -9,8 +9,8 @@ public class BDConnexion {
 
 	static {
 		try {
-			// driver = "com.mysql.jdbc.Driver";
-			driver = "oracle.jdbc.OracleDriver";
+			 driver = "com.mysql.jdbc.Driver";
+			//driver = "oracle.jdbc.OracleDriver";
 			Class.forName(driver);
 			url = "jdbc:mysql://localhost:3306/bdd_album_photo";
 			login = "root";

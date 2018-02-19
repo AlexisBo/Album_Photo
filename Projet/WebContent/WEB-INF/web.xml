@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
-	<servlet>
-		<servlet-name>ConnexionUtilisateur</servlet-name>
-		<servlet-class>controleur.ConnexionUtilisateur</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<servlet-class>controleur.InscriptionUtilisateur</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>test</servlet-name>
-		<servlet-class>controleur.InscriptionUtilisateur</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>ConnexionUtilisateur</servlet-name>
-		<url-pattern>/connexion</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<url-pattern>/Album_Photo/Projet/WebContent/www/album_listing.jsp
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>ConnexionUtilisateur</servlet-name>
+    <servlet-class>controleur.ConnexionUtilisateur</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InscriptionUtilisateur</servlet-name>
+    <servlet-class>controleur.InscriptionUtilisateur</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConnexionUtilisateur</servlet-name>
+    <url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InscriptionUtilisateur</servlet-name>
+    <url-pattern>/Album_Photo/Projet/WebContent/www/album_listing.jsp
 		</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>test</servlet-name>
-		<url-pattern>/connexion_test.jsp</url-pattern>
-	</servlet-mapping>
+  </servlet-mapping>
 </web-app>

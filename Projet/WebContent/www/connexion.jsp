@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 
@@ -41,7 +44,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecter</h1>
-						<form class="py-3" method="get" action="connexion">
+						<form class="py-3" method="post" action="connexion">
 							<input class="form-control" type="hidden" value="connexion"
 								id="operation">
 
