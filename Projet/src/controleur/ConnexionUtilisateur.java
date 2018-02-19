@@ -48,8 +48,8 @@ public class ConnexionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			this.getServletContext().getRequestDispatcher("/Album_Photo/Projet/WebContent/www/album_listing.jsp")
-					.forward(request, response);
+//			this.getServletContext().getRequestDispatcher("/Album_Photo/Projet/WebContent/www/album_listing.jsp")
+//					.forward(request, response);
 		}
 	}
 }

@@ -44,7 +44,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecter</h1>
-						<form class="py-3" method="post" action="connexion">
+						<form class="py-3" method="post" action="/Album_Photo/Projet/WebContent/www/album_listing.jsp">
 							<input class="form-control" type="hidden" value="connexion"
 								id="operation">
 

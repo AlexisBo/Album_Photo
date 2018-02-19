@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="modele_entity.Utilisateur"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +16,10 @@
 </head>
 
 <body>
+	<%
+		Utilisateur u = (Utilisateur) session.getAttribute("utilisateur");
+	%>
+	<h1 class="text-light" style="font-size: 80px"><%=u.getPseudo()%></h1>
 	<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
 		<div class="container">
 			<button class="navbar-toggler navbar-toggler-right" type="button"

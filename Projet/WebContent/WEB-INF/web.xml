@@ -11,7 +11,7 @@
   
   <servlet-mapping>
     <servlet-name>ConnexionUtilisateur</servlet-name>
-    <url-pattern>/connexion</url-pattern>
+    <url-pattern>/Album_Photo/Projet/WebContent/www/album_listing.jsp</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>InscriptionUtilisateur</servlet-name>
