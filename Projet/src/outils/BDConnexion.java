@@ -16,7 +16,6 @@ public class BDConnexion {
 			url = "jdbc:mysql://localhost/bdd_album_photo";
 			login = "root";
 			passwd = "";
-			connexion = DriverManager.getConnection(url, login, passwd);
 		} catch (Exception e) {
 			// problème, on arrête le serveur
 			System.out.println(e);
@@ -25,6 +24,13 @@ public class BDConnexion {
 	}
 
 	public static Connection getConnexion() {
+		try {
+			connexion = DriverManager.getConnection(url, login, passwd);
+		} catch (SQLException e) {
+			// problème, on arrête le serveur
+			System.out.println(e);
+			System.exit(1);
+		}
 		return connexion;
 	}
 

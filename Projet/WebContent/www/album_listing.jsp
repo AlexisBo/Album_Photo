@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ page import="modele_entity.Utilisateur"%>
+<%-- <%@ page import="modele_entity.Utilisateur"%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -17,9 +17,9 @@
 
 <body>
 	<%
-		Utilisateur u = (Utilisateur) session.getAttribute("utilisateur");
+		/*Utilisateur u = (Utilisateur) session.getAttribute("utilisateur");*/
 	%>
-	<h1 class="text-light" style="font-size: 80px"><%=u.getPseudo()%></h1>
+<%-- 	<h1 class="text-light" style="font-size: 80px"><%=u.getPseudo()%></h1> --%>
 	<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
 		<div class="container">
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -158,8 +158,7 @@
 		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 		crossorigin="anonymous"></script>
 	<pingendo onclick="window.open('https://pingendo.com/', '_blank')"
-		style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:180px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made
-	with Pingendo&nbsp;&nbsp; <img
+		style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:180px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">By Projet 5&nbsp;&nbsp; <img
 		src="https://pingendo.com/site-assets/Pingendo_logo_big.png"
 		class="d-block" alt="Pingendo logo" height="16"> </pingendo>
 </body>

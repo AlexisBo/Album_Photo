@@ -1,17 +1,8 @@
 package modele_DAO;
 
-import java.sql.Connection;
+public class AlbumDAO extends GenericDAO {
 
-import outils.BDConnexion;
-
-public class AlbumDAO {
-	Connection connection;
-	
 	public AlbumDAO() {
-		try {
-			connection = BDConnexion.getConnexion();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 }

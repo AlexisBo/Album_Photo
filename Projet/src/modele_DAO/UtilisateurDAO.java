@@ -1,20 +1,15 @@
 package modele_DAO;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import modele_entity.Utilisateur;
-import outils.BDConnexion;
+import java.util.Date;
 
-public class UtilisateurDAO {
-	Connection connexion;
+import modele_entity.Utilisateur;
+
+public class UtilisateurDAO extends GenericDAO {
 
 	public UtilisateurDAO() {
-		try {
-			connexion = BDConnexion.getConnexion();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	/**
@@ -25,6 +20,8 @@ public class UtilisateurDAO {
 	 */
 	public Utilisateur seConnecter(String email, String password) {
 		Utilisateur utilisateur = null;
+
+		loadDatabase();
 
 		try {
 			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE email=? AND mdp=?;";
@@ -41,9 +38,10 @@ public class UtilisateurDAO {
 	public Utilisateur sInscrire(String pseudo, String email, String mdp, String telephone/* , Date dateNaissance */) {
 		Utilisateur utilisateur = null;
 
+		loadDatabase();
+
 		try {
-//			String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone, dateNaissance) VALUES (?, ?, ?, ?, ?);";
-			String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);";
+			 String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);";
 
 			PreparedStatement requeteSt = connexion.prepareStatement(requeteAddUser);
 
@@ -61,7 +59,7 @@ public class UtilisateurDAO {
 
 	public Utilisateur getByPseudo(String pseudo) {
 		Utilisateur utilisateur = null;
-		
+
 		try {
 			String requetePickUser = "SELECT * FROM Utilisateur u WHERE pseudo=?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
