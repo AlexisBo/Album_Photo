@@ -36,10 +36,12 @@ public class InscriptionUtilisateur extends HttpServlet {
 			Utilisateur u = utilisateurDAO.sInscrire(pseudo, email, mdp, telephone/* , dateNaissance */);
 
 			HttpSession session = request.getSession();
-
+			
 			if (u != null) {
 				session.setAttribute("utilisateur", u);
 			}
+
+			System.err.println("before");
 		}
 	}
 }

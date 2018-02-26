@@ -48,9 +48,9 @@ public class ConnexionUtilisateur extends HttpServlet {
 				session.setAttribute("utilisateur", u);
 			}
 
-			System.out.println("before");
+			System.err.println("before");
 			
-			this.getServletContext().getRequestDispatcher("/Projet/WebContent/www/connexion.jsp")
+			this.getServletContext().getRequestDispatcher("/Projet/www/album_listing.jsp")
 					.forward(request, response);
 		}
 	}

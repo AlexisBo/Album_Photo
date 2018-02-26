@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +10,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="/Projet/www/style/connexion.css" type="text/css">
+<link rel="stylesheet" href="/Projet/www/style/connexion.css"
+	type="text/css">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 				<div class="col-md-6">
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
-							connecteeeer</h1>
+							connecter</h1>
 						<form class="py-3" method="get" action="connexion">
 							<input class="form-control" type="hidden" value="connexion"
 								id="operation">
@@ -58,7 +59,6 @@
 							</div>
 							<button type="submit" class="btn btn-primary"
 								style="font-size: 20px">Connexion</button>
-							&lt;
 						</form>
 					</center>
 				</div>

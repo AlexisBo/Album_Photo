@@ -49,7 +49,7 @@
 					<div class="card">
 						<div class="card-body p-5">
 							<h3 class="pb-3">Inscrivez-vous</h3>
-							<form method="get" action="/Album_Photo/Projet/WebContent/www/album_listing.jsp">
+							<form method="get" action="inscription">
 								<input class="form-control" type="hidden" value="inscription"
 									id="operation">
 								<div class="form-group">
