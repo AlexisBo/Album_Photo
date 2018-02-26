@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="style/Connexion.css" type="text/css">
+<link rel="stylesheet" href="/Projet/www/style/connexion.css" type="text/css">
 </head>
 
 <body>
@@ -22,14 +22,14 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="/Album_Photo/Projet/index.html"><i
+			<a class="navbar-brand" href="/Projet/www/accueil.jsp"><i
 				class="fa d-inline fa-lg fa-cloud"></i>&nbsp;<b>Fotoen</b></a>
 			<div class="collapse navbar-collapse text-center justify-content-end"
 				id="navbar2SupportedContent">
-				<a href="/Album_Photo/Projet/WebContent/www/connexion.jsp"
+				<a href="/Projet/www/connexion.jsp"
 					class="btn navbar-btn ml-2 text-white btn-secondary"><i
 					class="fa d-inline fa-lg fa-user-circle-o"></i> Connexion</a> <a
-					href="/Album_Photo/Projet/WebContent/www/inscription.jsp"
+					href="/Projet/www/inscription.jsp"
 					class="btn navbar-btn ml-2 text-white btn-secondary">
 					Inscription</a>
 			</div>
@@ -44,7 +44,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecteeeer</h1>
-						<form class="py-3" method="get" action="/Album_Photo/Projet/WebContent/www/album_listing.jsp">
+						<form class="py-3" method="get" action="connexion">
 							<input class="form-control" type="hidden" value="connexion"
 								id="operation">
 

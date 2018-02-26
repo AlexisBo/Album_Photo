@@ -12,8 +12,8 @@ public class BDConnexion {
 			 driver = "com.mysql.jdbc.Driver";
 			//driver = "oracle.jdbc.OracleDriver";
 			Class.forName(driver);
-//			url = "jdbc:mysql://localhost:3306/bdd_album_photo";
-			url = "jdbc:mysql://localhost/bdd_album_photo";
+			url = "jdbc:mysql://localhost:3306/bdd_album_photo";
+//			url = "jdbc:mysql://localhost/bdd_album_photo";
 			login = "root";
 			passwd = "";
 			connexion = DriverManager.getConnection(url, login, passwd);
