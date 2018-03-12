@@ -1,4 +1,4 @@
-package ServletTest;
+package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ public class HelloWordTest extends HttpServlet {
 	}
 
 	/**
-	 * @see ServletTest#init(ServletConfig)
+	 * @see Servlets#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub

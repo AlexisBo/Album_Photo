@@ -1,4 +1,4 @@
-package controleur;
+package Servlets;
 
 import java.io.IOException;
 
@@ -33,11 +33,8 @@ public class InscriptionUtilisateur extends HttpServlet {
 		String operation = request.getParameter("operation");
 
 		// Gestion de la connexion
-			//Utilisateur utilisateur = new Utilisateur(request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"), request.getParameter("telephone"), null);
-		Utilisateur utilisateur = new Utilisateur("fakih", "fakih@fotoen.fr", "fakih", "0120304050", null);
+			Utilisateur utilisateur = new Utilisateur("admin", "admin@fotoen.fr", "admin", "0120304050", null);
 
-		
-		
 			//String[] splitDate = request.getParameter("dateNaissance").split("-");
 			if(utilisateurDAO.sInscrire(utilisateur) != 0) {
 				request.setAttribute("utilisateur", utilisateur);
@@ -51,7 +48,6 @@ public class InscriptionUtilisateur extends HttpServlet {
 //				session.setAttribute("utilisateur", u);
 //			}
 			
-			this.getServletContext().getRequestDispatcher("/Projet/www/album_listing.jsp")
-					.forward(request, response);
+	        this.getServletContext().getRequestDispatcher("/www/bonjour.jsp").forward(request, response);
 	}
 }
