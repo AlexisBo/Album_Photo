@@ -1,4 +1,4 @@
-package modele_DAO;
+package Bdd;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

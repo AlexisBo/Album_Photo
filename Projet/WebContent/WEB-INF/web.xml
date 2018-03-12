@@ -29,6 +29,8 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<url-pattern>/Projet/www/album_listing.jsp</url-pattern>
+		<url-pattern>/album_listing</url-pattern>
 	</servlet-mapping>
+
+
 </web-app>
