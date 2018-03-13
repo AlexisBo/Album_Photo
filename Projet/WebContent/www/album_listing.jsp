@@ -56,7 +56,6 @@
 	<div class="bg-dark text-white py-2">
 		<div class="container">
 			<div class="row">
-<<<<<<< HEAD
 				<c:forEach items="${utilisateur.albums}" var="album">
 					<div class="col-md-6">
 						<div class="card">
@@ -77,51 +76,6 @@
 									<a class="dropdown-item" href="#"
 										style="background-color: red; color: white;">Supprimer l'album</a>
 								</div>
-=======
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top"
-							src="https://seniors-en-vadrouille.fr/wp-content/uploads/2016/07/Ecosse.jpg"
-							alt="Card image cap">
-						<div class="card-body bg-dark">
-							<h5 class="card-title" style="font-size: 30px">Ecosse</h5>
-							<input type="hidden" name="Ecosse" value="Ecosse" id="album">
-							<p class="card-text text-primary" style="font-size: 20px">Voyage
-								en Ecosse (jj/mm/aaaa)</p>
-							<a href="#" class="btn btn-primary">Consulter</a>
-							<button class="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown" contenteditable="true"
-								style="float: right">Réglages</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Définir dossier courant</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"
-									style="background-color: red; color: white;">Supprimer
-									l'album</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card">
-						<img class="card-img-top"
-							src="https://www.nationalgeographic.com/content/dam/travel/Guide-Pages/north-america/united-states/newyork/newyork_NationalGeographic_2328428.jpg"
-							alt="Card image cap">
-						<div class="card-body bg-dark">
-							<h5 class="card-title" style="font-size: 30px">Etats-Unis</h5>
-							<p class="card-text text-primary" style="font-size: 20px">Voyage
-								aux Etats-Unis (jj/mm/aaaa)</p>
-							<a href="#" class="btn btn-primary">Consulter</a>
-							<button class="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown" contenteditable="true"
-								style="float: right">Réglages</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Définir dossier courant</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"
-									style="background-color: red; color: white;">Supprimer
-									l'album</a>
->>>>>>> 4323fefae7cb6c01f496d6106739f8d41affc40e
 							</div>
 						</div>
 					</div>
