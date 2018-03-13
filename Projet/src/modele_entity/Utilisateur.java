@@ -25,7 +25,7 @@ public class Utilisateur implements Observer {
 		this.commentaires = new ArrayList<>();
 		
 		this.albums = new ArrayList<>();
-		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias" , idAdmin, courant))
+		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias" , pseudo, true));
 	}
 
 	@Override

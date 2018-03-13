@@ -8,15 +8,15 @@ public class Album extends Observable {
 	private int id;
 	private String nom;
 	private String description;
-	private int idAdmin;
+	private String pseudoAdmin;
 	private boolean courant;
 	private List<Utilisateur> viewers;
 	private List<Media> medias;
 	
-	public Album(String nom, String description, int idAdmin, boolean courant) {
+	public Album(String nom, String description, String pseudoAdmin, boolean courant) {
 		this.nom = nom;
 		this.description = description;
-		this.idAdmin = idAdmin;
+		this.pseudoAdmin = pseudoAdmin;
 		this.courant = courant;
 		this.viewers = new ArrayList<>();
 		this.medias = new ArrayList<>();
@@ -46,12 +46,12 @@ public class Album extends Observable {
 		this.description = description;
 	}
 
-	public int getIdAdmin() {
-		return idAdmin;
+	public String getPseudoAdmin() {
+		return pseudoAdmin;
 	}
 
-	public void setIdAdmin(int idAdmin) {
-		this.idAdmin = idAdmin;
+	public void setPseudoAdmin(String pseudoAdmin) {
+		this.pseudoAdmin = pseudoAdmin;
 	}
 
 	public boolean isCourant() {
