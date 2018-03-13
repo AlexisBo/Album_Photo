@@ -16,9 +16,6 @@
 </head>
 
 <body>
-	<h1 class="text-light" style="font-size: 80px">
-		Pseudo:
-		<c:out value="${ utilisateur.pseudo }" /></h1>
 	<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
 	<div class="container">
 		<button class="navbar-toggler navbar-toggler-right" type="button"
