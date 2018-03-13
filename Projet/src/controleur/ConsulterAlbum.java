@@ -22,4 +22,21 @@ public class ConsulterAlbum extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		traitement(request, response);
 	}
+
+	public void traitement(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String album = request.getParameter("album");
+
+		// Gestion de l'inscription
+		Album a = albumDAO.visualiser(album);
+
+		if (a != null) {
+			request.setAttribute("album", a);
+		} else {
+			request.setAttribute("album", null);
+		}
+
+		this.getServletContext().getRequestDispatcher("/www/album_listing.jsp").forward(request, response);
+	}
 }
