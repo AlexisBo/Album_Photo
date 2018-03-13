@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 13 mars 2018 à 14:47
+-- Généré le :  mar. 13 mars 2018 à 14:53
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS `album` (
   `description` text,
   `courant` tinyint(1) NOT NULL,
   `date` date NOT NULL,
-  `id_utilisateur` int(11) DEFAULT NULL,
+  `pseudo_utilisateur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_utilisateur` (`id_utilisateur`)
+  KEY `id_utilisateur` (`pseudo_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
