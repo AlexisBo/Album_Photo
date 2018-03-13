@@ -65,6 +65,7 @@
 							alt="Card image cap">
 						<div class="card-body bg-dark">
 							<h5 class="card-title" style="font-size: 30px">Ecosse</h5>
+							<input type="hidden" name="Ecosse" value="Ecosse">
 							<p class="card-text text-primary" style="font-size: 20px">Voyage
 								en Ecosse (jj/mm/aaaa)</p>
 							<a href="#" class="btn btn-primary">Consulter</a>
