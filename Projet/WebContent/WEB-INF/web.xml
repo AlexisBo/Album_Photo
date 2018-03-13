@@ -15,21 +15,13 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>ConnexionUtilisateur</servlet-name>
-		<servlet-class>controleur.ConnexionUtilisateur</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<servlet-class>controleur.InscriptionUtilisateur</servlet-class>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<servlet-class>controleur.GestionUtilisateur</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>ConnexionUtilisateur</servlet-name>
-		<url-pattern>/connexion</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<url-pattern>/www/album_listing.jsp</url-pattern>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/albums</url-pattern>
 	</servlet-mapping>
 
 

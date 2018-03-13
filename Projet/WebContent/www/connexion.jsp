@@ -45,7 +45,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecter</h1>
-						<form class="py-3" method="get" action="connexion">
+						<form class="py-3" method="post" action="albums">
 							<input class="form-control" type="hidden" value="connexion"
 								name="operation">
 
