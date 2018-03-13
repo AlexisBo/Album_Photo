@@ -33,7 +33,7 @@ public class GestionUtilisateur extends HttpServlet {
 			throws ServletException, IOException {
 
 		String operation = request.getParameter("operation");
-		String chemin = "/www/accueil.jsp";
+		String chemin = "/www/error.jsp";
 
 		// Gestion de l'inscription
 		if (operation.equals("inscription")) {
@@ -44,27 +44,41 @@ public class GestionUtilisateur extends HttpServlet {
 			if (utilisateurDAO.sInscrire(utilisateur) != 0) {
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/album_listing.jsp";
+				System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo() + " récupéré");
 			} else {
 				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Inscription non valide");
 			}
-
-			System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo()  + " récupéré");
 		}
 
 		// Gestion de la connexion
 		if (operation.equals("connexion")) {
-			Utilisateur utilisateur = utilisateurDAO.seConnecter(request.getParameter("email"), request.getParameter("mdp"));
+			Utilisateur utilisateur = utilisateurDAO.seConnecter(request.getParameter("email"),
+					request.getParameter("mdp"));
 
 			if (utilisateur != null) {
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/album_listing.jsp";
+				System.err.println("Connexion: Utilisateur " + utilisateur.getPseudo() + " récupéré");
 			} else {
 				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Inscription non valide");
 			}
+		}
 
-			System.err.println("Connexion: Utilisateur " + utilisateur.getPseudo()  + " récupéré");
+		// Ajout d'un album
+		if (operation.equals("ajoutAlbum")) {
+			Utilisateur utilisateur = utilisateurDAO.seConnecter(request.getParameter("email"),
+					request.getParameter("mdp"));
+
+			if (utilisateur != null) {
+				request.setAttribute("utilisateur", utilisateur);
+				chemin = "/www/album_listing.jsp";
+				System.err.println("Connexion: Utilisateur " + utilisateur.getPseudo() + " récupéré");
+			} else {
+				request.setAttribute("utilisateur", null);
+				request.setAttribute("erreur", "Inscription non valide");
+			}
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);

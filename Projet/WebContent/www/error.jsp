@@ -10,13 +10,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="/Projet/www/style/album_listing.css"
-	type="text/css">
+<link rel="stylesheet" href="style/error.css" type="text/css">
 </head>
 
 <body>
-	<c:out value="${ utilisateur.pseudo }" />
-
 	<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
 	<div class="container">
 		<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -38,83 +35,23 @@
 		</div>
 	</div>
 	</nav>
-	<div class="py-5 text-center bg-secondary">
+	<div class="py-5 text-center bg-secondary h-100">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="text-light" style="font-size: 80px">Vos Albums</h1>
-							<p class="text-light" style="font-size: 20px">Ici, vous
-								pouvez crÃ©er et consulter vos albums photos.</p>
+							<h1 class="text-light w-100 h-25" style="font-size: 100px">ERREUR...
+								:(</h1>
+							<p class="text-light">InsÃ©rer un texte.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="bg-dark text-white py-2">
+	<div class="bg-dark text-white py-0">
 		<div class="container">
-			<div class="row">
-				<c:forEach items="${utilisateur.albums}" var="album">
-					<div class="col-md-6">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://seniors-en-vadrouille.fr/wp-content/uploads/2016/07/Ecosse.jpg"
-								alt="Card image cap">
-							<div class="card-body bg-dark">
-								<h5 class="card-title" style="font-size: 30px"><c:out value="${album['nom']}" /></h5>
-								<input type="hidden" name="Ecosse" value="Ecosse">
-								<p class="card-text text-primary" style="font-size: 20px"><c:out value="${album['description']}" /></p>
-								<a href="#" class="btn btn-primary">Consulter</a>
-								<button class="btn btn-primary dropdown-toggle"
-									data-toggle="dropdown" contenteditable="true"
-									style="float: right">Réglages</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Définir dossier courant</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#"
-										style="background-color: red; color: white;">Supprimer l'album</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-			<div class="py-5 text-white bg-dark">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<img class="card-img-top"
-								src="https://previews.123rf.com/images/tele52/tele521106/tele52110600001/9657545-ic%C3%B4ne-de-vecteur-photo-album-xxl-.jpg"
-								alt="Card image cap">
-						</div>
-						<div class="col-md-6">
-							<h1>Ajouter un album</h1>
-							<p>Remplissez tous les champs s'il vous plait.</p>
-							<form method="post" action="albums">
-								<input class="form-control" type="hidden" value="ajoutAlbum"
-									name="operation">
-								<div class="form-group">
-									<label for="InputName">Titre</label> <input type="text"
-										class="form-control" name="titre" placeholder="Votre titre">
-								</div>
-								<div class="form-group">
-									<label for="InputEmail1">Date album</label> <input type="date"
-										class="form-control" name="date_album"
-										placeholder="Date de l'album">
-								</div>
-								<div class="form-group">
-									<label for="Textarea">Description</label>
-									<textarea class="form-control" name="description" rows="3"
-										placeholder="Ecrivez ici"></textarea>
-								</div>
-								<button type="submit" class="btn btn-primary">Ajouter</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
 					<p>Â© Copyright 2017 Fotoen - All rights reserved.</p>

@@ -1,6 +1,8 @@
 package modele_entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,6 +13,8 @@ public class Utilisateur implements Observer {
 	private String mdp;
 	private String telephone;
 	private Date dateNaissance;
+	private List<Album> albums;
+	private List<Commentaire> commentaires;
 
 	public Utilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance){
 		this.pseudo = pseudo;
@@ -18,6 +22,10 @@ public class Utilisateur implements Observer {
 		this.mdp = mdp;
 		this.telephone = telephone;
 		this.dateNaissance = dateNaissance;
+		this.commentaires = new ArrayList<>();
+		
+		this.albums = new ArrayList<>();
+		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias" , idAdmin, courant))
 	}
 
 	@Override
@@ -92,5 +100,21 @@ public class Utilisateur implements Observer {
 
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
+
+	public List<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(List<Commentaire> commentaires) {
+		this.commentaires = commentaires;
 	}
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +10,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="/Projet/www/style/inscription.css" type="text/css">
+<link rel="stylesheet" href="/Projet/www/style/inscription.css"
+	type="text/css">
 </head>
 
 <body>
@@ -22,8 +23,7 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand"
-				href="/Projet/www/accueil.jsp"><i
+			<a class="navbar-brand" href="/Projet/www/accueil.jsp"><i
 				class="fa d-inline fa-lg fa-cloud"></i>&nbsp;<b>Fotoen</b></a>
 			<div class="collapse navbar-collapse text-center justify-content-end"
 				id="navbar2SupportedContent">
@@ -70,7 +70,8 @@
 										placeholder="Votre e-mail" name="email">
 								</div>
 								<div class="form-group">
-									<label>Numéro de téléphone</label> <input class="form-control"
+									<label>Numéro de téléphone</label> <input
+										class="form-control"
 										placeholder="Votre numéro de téléphone" name="telephone">
 								</div>
 								<div class="form-group">

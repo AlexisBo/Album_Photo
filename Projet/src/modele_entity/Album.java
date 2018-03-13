@@ -9,13 +9,15 @@ public class Album extends Observable {
 	private String nom;
 	private String description;
 	private int idAdmin;
+	private boolean courant;
 	private List<Utilisateur> viewers;
 	private List<Media> medias;
 	
-	public Album(String nom, String description, int idAdmin) {
+	public Album(String nom, String description, int idAdmin, boolean courant) {
 		this.nom = nom;
 		this.description = description;
 		this.idAdmin = idAdmin;
+		this.courant = courant;
 		this.viewers = new ArrayList<>();
 		this.medias = new ArrayList<>();
 	}
@@ -52,6 +54,14 @@ public class Album extends Observable {
 		this.idAdmin = idAdmin;
 	}
 
+	public boolean isCourant() {
+		return courant;
+	}
+
+	public void setCourant(boolean courant) {
+		this.courant = courant;
+	}
+
 	public List<Utilisateur> getViewers() {
 		return viewers;
 	}
@@ -67,5 +77,4 @@ public class Album extends Observable {
 	public void setMedias(List<Media> medias) {
 		this.medias = medias;
 	}
-
 }
