@@ -28,30 +28,27 @@ public class InscriptionUtilisateur extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		traitement(request, response);
 	}
-	
-	public void traitement(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public void traitement(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String operation = request.getParameter("operation");
 
-		// Gestion de la connexion
-			//Utilisateur utilisateur = new Utilisateur(request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"), request.getParameter("telephone"), null);
-		Utilisateur utilisateur = new Utilisateur("fakih", "fakih@fotoen.fr", "fakih", "0120304050", null);
+		// Gestion de l'inscription
+		if (operation.equals("inscription")) {
+			Utilisateur utilisateur = new Utilisateur(request.getParameter("pseudo"), request.getParameter("email"),
+					request.getParameter("mdp"), request.getParameter("telephone"), null);
 
-		
-		
-			//String[] splitDate = request.getParameter("dateNaissance").split("-");
-			if(utilisateurDAO.sInscrire(utilisateur) != 0) {
+			System.err.println("Utilisateur récupéré");
+
+			// String[] splitDate = request.getParameter("dateNaissance").split("-");
+			if (utilisateurDAO.sInscrire(utilisateur) != 0) {
 				request.setAttribute("utilisateur", utilisateur);
 			} else {
 				request.setAttribute("utilisateur", null);
 			}
 
-//			HttpSession session = request.getSession();
-//			
-//			if (u != null) {
-//				session.setAttribute("utilisateur", u);
-//			}
-			
-			this.getServletContext().getRequestDispatcher("/Projet/www/album_listing.jsp")
-					.forward(request, response);
+			this.getServletContext().getRequestDispatcher("/www/album_listing.jsp").forward(request, response);
+		}
 	}
 }

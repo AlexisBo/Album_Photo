@@ -29,7 +29,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>InscriptionUtilisateur</servlet-name>
-		<url-pattern>/album_listing</url-pattern>
+		<url-pattern>/www/album_listing.jsp</url-pattern>
 	</servlet-mapping>
 
 

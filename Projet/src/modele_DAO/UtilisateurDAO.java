@@ -25,11 +25,16 @@ public class UtilisateurDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT nom FROM Utilisateur u WHERE email=? AND mdp=?;";
+			String requetePickUser = "SELECT pseudo, email, mdp, telephone FROM Utilisateur WHERE email=? AND mdp=?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
 			requeteSt.setString(1, email);
 			requeteSt.setString(2, password);
-			utilisateur = (Utilisateur) requeteSt.executeQuery();
+			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				utilisateur = new Utilisateur(rslt.getString("pseudo"), rslt.getString("email"), rslt.getString("mdp"),
+						rslt.getString("telephone"), null);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -39,25 +44,19 @@ public class UtilisateurDAO extends GenericDAO {
 	public int sInscrire(Utilisateur utilisateur) {
 		loadDatabase();
 		int resultat = 0;
-		
+
 		try {
-//			 String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);";
+			// String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp,
+			// telephone) VALUES (?, ?, ?, ?);";
 
-			PreparedStatement requeteSt = connexion.prepareStatement("INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);");
+			PreparedStatement requeteSt = connexion
+					.prepareStatement("INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);");
 
-//			Statement statement = connexion.createStatement();
-//			
-//			resultat = statement.executeQuery("SELECT u.pseudo FROM utilisateur u;");
-//			
-//			while (resultat.next()) {
-//                return (String) resultat.getString("pseudo");
-//			}
-			
 			requeteSt.setString(1, utilisateur.getPseudo());
 			requeteSt.setString(2, utilisateur.getEmail());
 			requeteSt.setString(3, utilisateur.getMdp());
 			requeteSt.setString(4, utilisateur.getTelephone());
-//			 requeteSt.setString(5, dateNaissance);
+			// requeteSt.setString(5, dateNaissance);
 			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

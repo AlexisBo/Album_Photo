@@ -37,21 +37,22 @@ public class ConnexionUtilisateur extends HttpServlet {
 		String operation = request.getParameter("operation");
 
 		// Gestion de la connexion
-		if (operation.equals("connexion")) {
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			Utilisateur u = utilisateurDAO.seConnecter(email, password);
+		//if (operation.equals("connexion")) {
+			Utilisateur u = utilisateurDAO.seConnecter("admin@fotoen.fr", "admin");
 
-			HttpSession session = request.getSession();
+			System.err.println("Utilisateur récupéré");
 
+			System.err.println(u);
+			
+			System.err.println(u.getPseudo());
+			
 			if (u != null) {
-				session.setAttribute("utilisateur", u);
+				request.setAttribute("utilisateur", u);
+			} else {
+				request.setAttribute("utilisateur", null);
 			}
 
-			System.err.println("before");
-			
-			this.getServletContext().getRequestDispatcher("/Projet/www/album_listing.jsp")
-					.forward(request, response);
-		}
+			this.getServletContext().getRequestDispatcher("/www/album_listing.jsp").forward(request, response);
+		//}
 	}
 }

@@ -47,14 +47,14 @@
 							connecter</h1>
 						<form class="py-3" method="get" action="connexion">
 							<input class="form-control" type="hidden" value="connexion"
-								id="operation">
+								name="operation">
 
 							<div class="form-group" style="font-size: 30px">
 								<label>Email address</label> <input type="email" name="email"
 									class="form-control" placeholder="Enter email">
 							</div>
 							<div class="form-group" style="font-size: 30px">
-								<label>Password</label> <input type="password" name="password"
+								<label>Password</label> <input type="password" name="mdp"
 									class="form-control" placeholder="Password">
 							</div>
 							<button type="submit" class="btn btn-primary"

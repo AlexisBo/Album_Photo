@@ -49,9 +49,9 @@
 					<div class="card">
 						<div class="card-body p-5">
 							<h3 class="pb-3">Inscrivez-vous</h3>
-							<form method="post" action="/Projet/www/album_listing.jsp">
+							<form method="post" action="album_listing.jsp">
 								<input class="form-control" type="hidden" value="inscription"
-									id="operation">
+									name="operation">
 								<div class="form-group">
 									<label>Pseudo</label> <input class="form-control"
 										placeholder="Votre pseudo" name="pseudo">
@@ -67,7 +67,7 @@
 								</div>
 								<div class="form-group">
 									<label>Adresse e-mail</label> <input class="form-control"
-										placeholder="Votre e-mail" name="mail">
+										placeholder="Votre e-mail" name="email">
 								</div>
 								<div class="form-group">
 									<label>Numéro de téléphone</label> <input class="form-control"
