@@ -16,19 +16,25 @@ public class AlbumDAO extends GenericDAO {
 	}
 
 	public Album visualiser(String nom) {
+		Album album = null;
 
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT * FROM Utilisateur WHERE nom = ?;";
+			String requetePickUser = "SELECT nom, description, courant, date, id_utilisateur FROM Utilisateur WHERE nom = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
 			requeteSt.setString(1, nom);
 			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				album = new Album(rslt.getString("nom"), rslt.getString("description"), rslt.getInt("id_utilisateur"),
+						rslt.getBoolean("courant"), rslt.getDate("date"));
+				break;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		return;
+		return album;
 	}
 
 	public List<Album> getAlbums(int idAdmin) {
@@ -72,8 +78,5 @@ public class AlbumDAO extends GenericDAO {
 			e.printStackTrace();
 		}
 		return resultat;
-
-=======
->>>>>>> 0c536582d3ca917586e83e8f73366faf6cbbe7a6
 	}
 }

@@ -6,13 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import modele_DAO.AlbumDAO;
+import modele_entity.Album;
 
 public class ConsulterAlbum extends HttpServlet {
-	AlbumDAO AlbumDAO;
+
+	private static final long serialVersionUID = 1L;
+	
+	AlbumDAO albumDAO;
 
 	public void init() {
-		AlbumDAO = new AlbumDAO();
+		albumDAO = new AlbumDAO();
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
