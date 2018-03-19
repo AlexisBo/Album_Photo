@@ -25,15 +25,16 @@ public class UtilisateurDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT pseudo, email, mdp, telephone FROM Utilisateur WHERE email=? AND mdp=?;";
+			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE email=? AND mdp=?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
 			requeteSt.setString(1, email);
 			requeteSt.setString(2, password);
 			ResultSet rslt = requeteSt.executeQuery();
 
 			while (rslt.next()) {
-				utilisateur = new Utilisateur(rslt.getString("pseudo"), rslt.getString("email"), rslt.getString("mdp"),
-						rslt.getString("telephone"), null);
+				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"), rslt.getString("mdp"),
+						rslt.getString("telephone"), rslt.getDate("dateNaissance"));
+				break;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,39 +43,24 @@ public class UtilisateurDAO extends GenericDAO {
 	}
 
 	public int sInscrire(Utilisateur utilisateur) {
-		loadDatabase();
 		int resultat = 0;
+		
+		loadDatabase();
 
 		try {
-			// String requeteAddUser = "INSERT INTO utilisateur (pseudo, email, mdp,
-			// telephone) VALUES (?, ?, ?, ?);";
 
 			PreparedStatement requeteSt = connexion
-					.prepareStatement("INSERT INTO utilisateur (pseudo, email, mdp, telephone) VALUES (?, ?, ?, ?);");
+					.prepareStatement("INSERT INTO utilisateur (pseudo, email, mdp, telephone, dateNaissance) VALUES (?, ?, ?, ?, ?);");
 
 			requeteSt.setString(1, utilisateur.getPseudo());
 			requeteSt.setString(2, utilisateur.getEmail());
 			requeteSt.setString(3, utilisateur.getMdp());
 			requeteSt.setString(4, utilisateur.getTelephone());
-			// requeteSt.setString(5, dateNaissance);
+			requeteSt.setDate(5, utilisateur.getDateNaissance());
 			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultat;
-	}
-
-	public Utilisateur getByPseudo(String pseudo) {
-		Utilisateur utilisateur = null;
-
-		try {
-			String requetePickUser = "SELECT * FROM Utilisateur u WHERE pseudo=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setString(1, pseudo);
-			utilisateur = (Utilisateur) requeteSt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return utilisateur;
 	}
 }

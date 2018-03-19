@@ -3,19 +3,23 @@ package modele_entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import modele_DAO.CommentaireDAO;
+
 public class Media {
 
 
 	private int id;
 	private String lien;
 	private String description;
-	private Utilisateur utilisateur;
+	private int idUtilisateur;
+	private int idAlbum;
 	private List<Commentaire> commentaires;
 	
-	public Media(String lien, String description, Utilisateur utilisateur) {
+	public Media(String lien, String description, int idUtilisateur, int idAlbum) {
 		this.lien = lien;
 		this.description = description;
-		this.utilisateur = utilisateur;
+		this.idUtilisateur = idUtilisateur;
+		this.idAlbum = idAlbum;
 		this.commentaires = new ArrayList<>();
 	}
 
@@ -43,21 +47,27 @@ public class Media {
 		this.description = description;
 	}
 
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
+
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
+
+	public int getIdAlbum() {
+		return idAlbum;
+	}
+
+	public void setIdAlbum(int idAlbum) {
+		this.idAlbum = idAlbum;
+	}
+
 	public List<Commentaire> getCommentaires() {
-		return commentaires;
+		return new CommentaireDAO().getCommentairesByMedia(id);
 	}
 
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
-	}
-
-
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
 	}
 }

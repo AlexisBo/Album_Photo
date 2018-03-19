@@ -1,23 +1,28 @@
 package modele_entity;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+
+import modele_DAO.MediaDAO;
 
 public class Album extends Observable {
 	private int id;
 	private String nom;
 	private String description;
-	private String pseudoAdmin;
 	private boolean courant;
+	private int idAdmin;
+	private Date date;
 	private List<Utilisateur> viewers;
 	private List<Media> medias;
 	
-	public Album(String nom, String description, String pseudoAdmin, boolean courant) {
+	public Album(String nom, String description, int idAdmin, boolean courant, Date date) {
 		this.nom = nom;
 		this.description = description;
-		this.pseudoAdmin = pseudoAdmin;
+		this.idAdmin = idAdmin;
 		this.courant = courant;
+		this.setDate(date);
 		this.viewers = new ArrayList<>();
 		this.medias = new ArrayList<>();
 	}
@@ -46,20 +51,28 @@ public class Album extends Observable {
 		this.description = description;
 	}
 
-	public String getPseudoAdmin() {
-		return pseudoAdmin;
-	}
-
-	public void setPseudoAdmin(String pseudoAdmin) {
-		this.pseudoAdmin = pseudoAdmin;
-	}
-
 	public boolean isCourant() {
 		return courant;
 	}
 
 	public void setCourant(boolean courant) {
 		this.courant = courant;
+	}
+
+	public int getIdAdmin() {
+		return idAdmin;
+	}
+
+	public void setIdAdmin(int idAdmin) {
+		this.idAdmin = idAdmin;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public List<Utilisateur> getViewers() {
@@ -71,7 +84,7 @@ public class Album extends Observable {
 	}
 
 	public List<Media> getMedias() {
-		return medias;
+		return new MediaDAO().getMediasByAlbum(id);
 	}
 
 	public void setMedias(List<Media> medias) {

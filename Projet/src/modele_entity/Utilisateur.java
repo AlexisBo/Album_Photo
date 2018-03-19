@@ -1,10 +1,13 @@
 package modele_entity;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
+import modele_DAO.AlbumDAO;
+import modele_DAO.CommentaireDAO;
 
 public class Utilisateur implements Observer {
 	private int id;
@@ -16,22 +19,32 @@ public class Utilisateur implements Observer {
 	private List<Album> albums;
 	private List<Commentaire> commentaires;
 
-	public Utilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance){
+	public Utilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance) {
+		this.setUtilisateur(pseudo, email, mdp, telephone, dateNaissance);
+	}
+
+	public Utilisateur(int id, String pseudo, String email, String mdp, String telephone, Date dateNaissance) {
+		this.id = id;
+		this.setUtilisateur(pseudo, email, mdp, telephone, dateNaissance);
+	}
+
+	private void setUtilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance) {
 		this.pseudo = pseudo;
 		this.email = email;
 		this.mdp = mdp;
 		this.telephone = telephone;
 		this.dateNaissance = dateNaissance;
 		this.commentaires = new ArrayList<>();
-		
+
 		this.albums = new ArrayList<>();
-		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias" , pseudo, true));
+		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias", id, true,
+				new Date(new java.util.Date().getTime())));
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -42,12 +55,13 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * @return the pseudo
 	 */
@@ -56,31 +70,38 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @param pseudo the pseudo to set
+	 * @param pseudo
+	 *            the pseudo to set
 	 */
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
+
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
+
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
 	 * @return the mdp
 	 */
 	public String getMdp() {
 		return mdp;
 	}
+
 	/**
-	 * @param mdp the mdp to set
+	 * @param mdp
+	 *            the mdp to set
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
@@ -103,15 +124,24 @@ public class Utilisateur implements Observer {
 	}
 
 	public List<Album> getAlbums() {
-		return albums;
+		return new AlbumDAO().getAlbums(id);
 	}
 
 	public void setAlbums(List<Album> albums) {
 		this.albums = albums;
 	}
 
+	public void insertAlbums() {
+		for (Album album : albums) {
+			System.err.println(album.getNom());
+			if (new AlbumDAO().insert(album) != 0) {
+				System.err.println("Ajout: Album " + album.getNom());
+			}
+		}
+	}
+
 	public List<Commentaire> getCommentaires() {
-		return commentaires;
+		return new CommentaireDAO().getCommentairesByUtilisateur(id);
 	}
 
 	public void setCommentaires(List<Commentaire> commentaires) {
