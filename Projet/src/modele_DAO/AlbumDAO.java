@@ -27,6 +27,7 @@ public class AlbumDAO extends GenericDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		return;
 	}
 
@@ -72,5 +73,7 @@ public class AlbumDAO extends GenericDAO {
 		}
 		return resultat;
 
+=======
+>>>>>>> 0c536582d3ca917586e83e8f73366faf6cbbe7a6
 	}
 }
