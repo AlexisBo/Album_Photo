@@ -18,6 +18,5 @@ public class AlbumDAO extends GenericDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ;
 	}
 }
