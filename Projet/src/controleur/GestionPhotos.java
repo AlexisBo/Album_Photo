@@ -12,10 +12,10 @@ import modele_DAO.AlbumDAO;
 import modele_entity.Album;
 
 @WebServlet("/ConsulterAlbum")
-public class ConsulterAlbum extends HttpServlet {
+public class GestionPhotos extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	AlbumDAO albumDAO;
 
 	public void init() {
@@ -33,17 +33,22 @@ public class ConsulterAlbum extends HttpServlet {
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String album = request.getParameter("album");
+		String chemin = "/www/error.jsp";
+		String[] splits = request.getServletPath().split("/");
+		String operation = splits[splits.length - 1];
 
-		// Gestion de l'inscription
-		Album a = albumDAO.visualiser(album);
+		// Visualisation d'un album
+		if (operation.equals("albumAjout")) {
+			String album = request.getParameter("album");
+			
+			Album a = albumDAO.visualiser(album);
 
-		if (a != null) {
-			request.setAttribute("album", a);
-		} else {
-			request.setAttribute("album", null);
+			if (a != null) {
+				request.setAttribute("album", a);
+			} else {
+				request.setAttribute("album", null);
+			}
 		}
-
-		this.getServletContext().getRequestDispatcher("/www/album_listing.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/www/album.jsp").forward(request, response);
 	}
 }
