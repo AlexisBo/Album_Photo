@@ -62,12 +62,25 @@ public class GestionAlbums extends HttpServlet {
 		}
 		
 		if (operation.equals("albumCourant")) {
-			System.err.println("AlbumCourant " + request.getParameter("albumCourant"));
+
+			if (albumDAO.setCourant(request.getParameter("album")) != 0) {				
+				chemin = "/www/album_listing.jsp";
+				System.err.println("AlbumCourant " + request.getParameter("albumCourant"));
+			} else {
+				request.setAttribute("erreur", "Album non supprimé");
+			}
 			System.err.println("AlbumCourant data value" + request.getParameter("data-value"));
 		}
 		
 		if (operation.equals("albumSuppression")) {
-			System.err.println("albumSuppression " + request.getParameter("albumSuppression") + " ajouté");
+
+			if (albumDAO.supprimer(request.getParameter("album")) != 0) {				
+				chemin = "/www/album_listing.jsp";
+				System.err.println("albumSuppression " + request.getParameter("albumSuppression") + " ajouté");
+			} else {
+				request.setAttribute("erreur", "Album non supprimé");
+			}
+			
 			System.err.println("albumSuppression data value" + request.getParameter("data-value") + " ajouté");
 		}
 
