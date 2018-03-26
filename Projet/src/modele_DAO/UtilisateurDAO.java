@@ -32,8 +32,8 @@ public class UtilisateurDAO extends GenericDAO {
 			ResultSet rslt = requeteSt.executeQuery();
 
 			while (rslt.next()) {
-				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"), rslt.getString("mdp"),
-						rslt.getString("telephone"), rslt.getDate("dateNaissance"));
+				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"),
+						rslt.getString("mdp"), rslt.getString("telephone"), rslt.getDate("dateNaissance"));
 				break;
 			}
 		} catch (SQLException e) {
@@ -42,25 +42,57 @@ public class UtilisateurDAO extends GenericDAO {
 		return utilisateur;
 	}
 
-	public int sInscrire(Utilisateur utilisateur) {
-		int resultat = 0;
-		
+	public Utilisateur sInscrire(Utilisateur utilisateur) {
 		loadDatabase();
 
 		try {
 
-			PreparedStatement requeteSt = connexion
-					.prepareStatement("INSERT INTO utilisateur (pseudo, email, mdp, telephone, dateNaissance) VALUES (?, ?, ?, ?, ?);");
+			PreparedStatement requeteSt = connexion.prepareStatement(
+					"INSERT INTO utilisateur (pseudo, email, mdp, telephone, dateNaissance) VALUES (?, ?, ?, ?, ?);",
+					Statement.RETURN_GENERATED_KEYS);
 
 			requeteSt.setString(1, utilisateur.getPseudo());
 			requeteSt.setString(2, utilisateur.getEmail());
 			requeteSt.setString(3, utilisateur.getMdp());
 			requeteSt.setString(4, utilisateur.getTelephone());
 			requeteSt.setDate(5, utilisateur.getDateNaissance());
-			resultat = requeteSt.executeUpdate();
+
+			if (requeteSt.executeUpdate() != 0) {
+				ResultSet rslt = requeteSt.getGeneratedKeys();
+
+				while (rslt.next()) {
+					utilisateur = new Utilisateur(rslt.getInt(1), utilisateur.getPseudo(), utilisateur.getEmail(),
+							utilisateur.getMdp(), utilisateur.getTelephone(), utilisateur.getDateNaissance());
+					break;
+				}
+				return utilisateur;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return resultat;
+
+		return null;
+	}
+
+	public Utilisateur getUtilisateurById(int id) {
+		Utilisateur utilisateur = null;
+
+		loadDatabase();
+
+		try {
+			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE id=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			requeteSt.setInt(1, id);
+			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"),
+						rslt.getString("mdp"), rslt.getString("telephone"), rslt.getDate("dateNaissance"));
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
 	}
 }

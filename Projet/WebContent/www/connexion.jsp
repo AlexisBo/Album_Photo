@@ -45,10 +45,7 @@
 					<center>
 						<h1 class="text-gray-dark" style="font-size: 60px">Se
 							connecter</h1>
-						<form class="py-3" method="post" action="albums">
-							<input class="form-control" type="hidden" value="connexion"
-								name="operation">
-
+						<form class="py-3" method="post" action="connexion">
 							<div class="form-group" style="font-size: 30px">
 								<label>Email address</label> <input type="email" name="email"
 									class="form-control" placeholder="Enter email">
@@ -69,7 +66,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>Â© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>

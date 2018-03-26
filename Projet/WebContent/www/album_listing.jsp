@@ -46,7 +46,7 @@
 						<div class="col-md-12">
 							<h1 class="text-light" style="font-size: 80px">Vos Albums</h1>
 							<p class="text-light" style="font-size: 20px">Ici, vous
-								pouvez crÃ©er et consulter vos albums photos.</p>
+								pouvez creer, consulter et supprimer vos albums photos.</p>
 						</div>
 					</div>
 				</div>
@@ -63,17 +63,25 @@
 								src="https://seniors-en-vadrouille.fr/wp-content/uploads/2016/07/Ecosse.jpg"
 								alt="Card image cap">
 							<div class="card-body bg-dark">
-								<h5 class="card-title" style="font-size: 30px"><c:out value="${album['nom']}" /></h5>
-								<input type="hidden" name="Ecosse" value="Ecosse">
+							<c:choose>
+							  <c:when test="${album['courant']}">
+							    <h5 class="card-title" style="font-size: 30px"><c:out value="${album['nom']}" /> (Album courant)</h5>
+							  </c:when>
+							  <c:otherwise>
+							    <h5 class="card-title" style="font-size: 30px"><c:out value="${album['nom']}" /></h5>
+							  </c:otherwise>
+							</c:choose>
+								
+								<input type="hidden" name="album" value="${album['nom']}">
 								<p class="card-text text-primary" style="font-size: 20px"><c:out value="${album['description']}" /></p>
 								<a href="#" class="btn btn-primary">Consulter</a>
 								<button class="btn btn-primary dropdown-toggle"
 									data-toggle="dropdown" contenteditable="true"
 									style="float: right">Réglages</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Définir dossier courant</a>
+									<a class="dropdown-item" href="/www/albumCourant" name="albumCourant" data-value="${album['nom']}">Définir dossier courant</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#"
+									<a class="dropdown-item" href="/www/albumSuppression" name="albumSuppression" data-value="${album['nom']}"
 										style="background-color: red; color: white;">Supprimer l'album</a>
 								</div>
 							</div>
@@ -92,17 +100,12 @@
 						<div class="col-md-6">
 							<h1>Ajouter un album</h1>
 							<p>Remplissez tous les champs s'il vous plait.</p>
-							<form method="post" action="albums">
-								<input class="form-control" type="hidden" value="ajoutAlbum"
-									name="operation">
+							<form method="post" action="albumAjout">
+								<input class="form-control" type="hidden" value="${utilisateur['id']}"
+									name="idUtilisateur">
 								<div class="form-group">
 									<label for="InputName">Titre</label> <input type="text"
 										class="form-control" name="titre" placeholder="Votre titre">
-								</div>
-								<div class="form-group">
-									<label for="InputEmail1">Date album</label> <input type="date"
-										class="form-control" name="date_album"
-										placeholder="Date de l'album">
 								</div>
 								<div class="form-group">
 									<label for="Textarea">Description</label>
@@ -117,7 +120,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>Â© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>

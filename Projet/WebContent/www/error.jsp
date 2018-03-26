@@ -43,18 +43,18 @@
 						<div class="col-md-12">
 							<h1 class="text-light w-100 h-25" style="font-size: 100px">ERREUR...
 								:(</h1>
-							<p class="text-light">Insérer un texte.</p>
+							<p class="text-light"><c:out value="${ erreur }" /></p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="bg-dark text-white py-0">
+	<div class="bg-dark text-white py-2">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>� Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>

@@ -63,7 +63,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>Â© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>

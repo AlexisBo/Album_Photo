@@ -42,16 +42,13 @@
 			<div class="row">
 				<div class="align-self-center col-md-6 text-white">
 					<h1 class="text-center text-md-left display-3">Inscription</h1>
-					<p class="lead">Veuillez vous incrire avec le formulaire à
-						droite</p>
+					<p class="lead">Veuillez vous incrire avec le formulaire de droite</p>
 				</div>
 				<div class="col-md-6" id="book">
 					<div class="card">
 						<div class="card-body p-5">
 							<h3 class="pb-3">Inscrivez-vous</h3>
-							<form method="post" action="albums">
-								<input class="form-control" type="hidden" value="inscription"
-									name="operation">
+							<form method="post" action="inscription">
 								<div class="form-group">
 									<label>Pseudo</label> <input class="form-control"
 										placeholder="Votre pseudo" name="pseudo">
@@ -70,7 +67,7 @@
 										placeholder="Votre e-mail" name="email">
 								</div>
 								<div class="form-group">
-									<label>Numéro de téléphone</label> <input
+									<label>Numero de telephone</label> <input
 										class="form-control"
 										placeholder="Votre numéro de téléphone" name="telephone">
 								</div>
@@ -90,7 +87,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>� Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>

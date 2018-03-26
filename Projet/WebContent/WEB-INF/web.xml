@@ -19,10 +19,33 @@
 		<servlet-class>controleur.GestionUtilisateur</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>gestionAlbums</servlet-name>
+		<servlet-class>controleur.GestionAlbums</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>gestionUtilisateur</servlet-name>
-		<url-pattern>/www/albums</url-pattern>
+		<url-pattern>/www/connexion</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/inscription</url-pattern>
+	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>gestionAlbums</servlet-name>
+		<url-pattern>/www/albumAjout</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionAlbums</servlet-name>
+		<url-pattern>/www/albumCourant</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionAlbums</servlet-name>
+		<url-pattern>/www/albumSuppression</url-pattern>
+	</servlet-mapping>
 </web-app>

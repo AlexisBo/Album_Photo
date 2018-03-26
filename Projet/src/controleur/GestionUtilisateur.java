@@ -14,7 +14,7 @@ import modele_DAO.UtilisateurDAO;
 import modele_entity.Album;
 import modele_entity.Utilisateur;
 
-@WebServlet("/InscriptionUtilisateur")
+@WebServlet("/GestionUtilisateur")
 public class GestionUtilisateur extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -37,8 +37,9 @@ public class GestionUtilisateur extends HttpServlet {
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String operation = request.getParameter("operation");
 		String chemin = "/www/error.jsp";
+		String[] splits = request.getServletPath().split("/");
+		String operation = splits[splits.length - 1];
 
 		// Gestion de l'inscription
 		if (operation.equals("inscription")) {
@@ -54,17 +55,15 @@ public class GestionUtilisateur extends HttpServlet {
 			Utilisateur utilisateur = new Utilisateur(request.getParameter("pseudo"), request.getParameter("email"),
 					request.getParameter("mdp"), request.getParameter("telephone"), date);
 
-			// String[] splitDate = request.getParameter("dateNaissance").split("-");
-			if (utilisateurDAO.sInscrire(utilisateur) != 0) {
-				// request.setAttribute("utilisateur", utilisateur);
-				// chemin = "/www/album_listing.jsp";
-				chemin = "/www/connexion.jsp";
+			utilisateur = utilisateurDAO.sInscrire(utilisateur);
+			if (utilisateur != null) {
+				chemin = "/www/album_listing.jsp";
 				utilisateur.insertAlbums();
 				System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo() + " inscrit");
 			} else {
-				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Inscription non valide");
 			}
+			request.setAttribute("utilisateur", utilisateur);
 		}
 
 		// Gestion de la connexion
@@ -80,11 +79,6 @@ public class GestionUtilisateur extends HttpServlet {
 				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Inscription non valide");
 			}
-		}
-
-		// Ajout d'un album
-		if (operation.equals("ajoutAlbum")) {
-
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
