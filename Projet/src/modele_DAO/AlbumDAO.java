@@ -37,31 +37,32 @@ public class AlbumDAO extends GenericDAO {
 		return album;
 	}
 
-	public Album supprimer(Album album) {
-		Album album = null;
+	public void supprimer(String nom) {
 
 		loadDatabase();
 
 		try {
-			String requetePickUser = "DELETE FROM Album WHERE nom = ?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setString(1, album.getNom());
+			String requete = "DELETE FROM Album WHERE nom = ?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setString(1, nom);
 			requeteSt.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public Album setCourant(Album album) {
-		Album album = null;
+	public void setCourant(String nom) {
 
 		loadDatabase();
 
 		try {
-			String requetePickUser = "UPDATE Album SET courant = 1 WHERE nom = ?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setString(1, album.getNom());
+			String requete = "UPDATE Album SET courant = 0 WHERE courant = 1;";
+			String requete2 = "UPDATE Album SET courant = 1 WHERE nom = ?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			PreparedStatement requeteSt2 = connexion.prepareStatement(requete2);
+			requeteSt2.setString(1, album.getNom());
 			requeteSt.executeQuery();
+			requeteSt2.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
