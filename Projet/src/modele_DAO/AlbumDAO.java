@@ -21,7 +21,7 @@ public class AlbumDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT nom, description, courant, date, id_utilisateur FROM Utilisateur WHERE nom = ?;";
+			String requetePickUser = "SELECT nom, description, courant, date, id_utilisateur FROM Album WHERE nom = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
 			requeteSt.setString(1, nom);
 			ResultSet rslt = requeteSt.executeQuery();
