@@ -38,7 +38,7 @@ public class GestionAlbums extends HttpServlet {
 		traitement(request, response);
 	}
 
-	//traite les différente actions exercées sur la vue (suppréssion, ajout, ...)
+	//traite les différentes actions exercées sur la vue (suppréssion, ajout, ...)
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
