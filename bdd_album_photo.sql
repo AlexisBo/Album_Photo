@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 13 mars 2018 à 14:53
+-- Généré le :  lun. 09 avr. 2018 à 13:04
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -30,15 +30,24 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `album`;
 CREATE TABLE IF NOT EXISTS `album` (
-  `id` int(11) NOT NULL,
-  `nom` text,
-  `description` text,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  `description` text NOT NULL,
   `courant` tinyint(1) NOT NULL,
   `date` date NOT NULL,
-  `pseudo_utilisateur` varchar(255) DEFAULT NULL,
+  `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_utilisateur` (`pseudo_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `id_utilisateur` (`id_utilisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `album`
+--
+
+INSERT INTO `album` (`id`, `nom`, `description`, `courant`, `date`, `id_utilisateur`) VALUES
+(3, 'Courant', 'Ce dossier est votre premier album de medias', 1, '2018-03-26', 1),
+(8, 'Courant', 'Ce dossier est votre premier album de medias', 1, '2018-03-26', 2),
+(9, 'Test', 'Premier test d\'ajout', 0, '2018-03-26', 2);
 
 -- --------------------------------------------------------
 
@@ -48,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `album` (
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `commentaire` text,
   `evaluation` int(11) DEFAULT NULL,
   `date` date NOT NULL,
@@ -62,12 +71,25 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `liste_viewers_of_album`
+--
+
+DROP TABLE IF EXISTS `liste_viewers_of_album`;
+CREATE TABLE IF NOT EXISTS `liste_viewers_of_album` (
+  `id_album` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_viewer` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `media`
 --
 
 DROP TABLE IF EXISTS `media`;
 CREATE TABLE IF NOT EXISTS `media` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` text,
   `lien` varchar(255) DEFAULT NULL,
   `id_utilisateur` int(11) DEFAULT NULL,
@@ -94,17 +116,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`id`,`pseudo`),
   UNIQUE KEY `id_2` (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `pseudo`, `email`, `mdp`, `telephone`, `dateNaissance`) VALUES
-(1, 'Melvin', 'mf@foten.fr', 'fiotte', '0606060606', '2000-03-01'),
-(2, 'Fakih', 'fd@fotoen.fr', 'renoi', '0707070707', '1973-03-07'),
-(3, 'Alexis', 'ab@fotoen.fr', 'kekxd', '0662266226', '1996-11-10'),
-(4, 'admin', 'admin@fotoen.fr', 'admin', '0607060706', '2018-03-09');
+(1, 'admin', 'admin@fotoen.fr', 'admin', '0607060706', '2018-03-09'),
+(2, 'fakih', 'fakih@fotoen.fr', 'fakih', '0120304050', '2018-03-26');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
