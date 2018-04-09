@@ -45,7 +45,7 @@ public class GestionAlbums extends HttpServlet {
 
 		// Ajout d'un album
 		if (operation.equals("albumAjout")) {
-			System.err.println("Verificatioooooon " + request.getParameter("idUtilisateur"));
+			System.err.println("Verification " + request.getParameter("idUtilisateur"));
 			Album album = new Album(request.getParameter("titre"), request.getParameter("description"),
 					Integer.parseInt(request.getParameter("idUtilisateur")), false, new Date(new java.util.Date().getTime()));
 
