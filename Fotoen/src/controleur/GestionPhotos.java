@@ -66,7 +66,7 @@ public class GestionPhotos extends HttpServlet {
 				
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/album_listing.jsp";
-				System.err.println("AjoutAlbum: Album " + media.getLien() + " ajoutÃ©");
+				System.err.println("AjoutAlbum: Album " + media.getLien() + " ajouté");
 			} else {
 				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Album non valide");

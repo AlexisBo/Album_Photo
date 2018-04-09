@@ -62,7 +62,9 @@ public class GestionUtilisateur extends HttpServlet {
 				chemin = "/www/album_listing.jsp";
 				utilisateur.insertAlbums();
 				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
-				file.mkdir();
+				if(file.mkdir()) {
+					System.err.println("Creation dossier: Utilisateur " + utilisateur.getPseudo() + " créée");
+				}
 				System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo() + " inscrit");
 			} else {
 				request.setAttribute("erreur", "Inscription non valide");

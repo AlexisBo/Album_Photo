@@ -42,9 +42,11 @@ public class Utilisateur implements Observer {
 		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias", id, true,
 				new Date(new java.util.Date().getTime())));
 
-		File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + this.pseudo + "/" + this.albums.get(0).getNom());
+		String chemin = GenericDAO.MEDIAS_CHEMIN_ABSOLUE + this.pseudo + "\\" + this.albums.get(0).getNom();
+
+		File file = new File(chemin);
 		if(!file.exists()) {
-			file.mkdir();
+			file.mkdirs();
 		}
 	}
 

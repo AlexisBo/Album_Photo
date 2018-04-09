@@ -54,7 +54,7 @@ public class GestionAlbums extends HttpServlet {
 			if (albumDAO.insert(album) != 0) {
 				Utilisateur utilisateur = utilisateurDAO
 						.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
-				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "/" + album.getNom());
+				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + album.getNom());
 				file.mkdir();
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/album_listing.jsp";
@@ -80,8 +80,11 @@ public class GestionAlbums extends HttpServlet {
 		if (operation.equals("albumSuppression")) {
 
 			if (albumDAO.supprimer(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("album")) != 0) {
+				Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
+				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + request.getParameter("album"));
+				file.mkdir();
 				chemin = "/www/album_listing.jsp";
-				request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+				request.setAttribute("utilisateur", utilisateur);
 				System.err.println("albumSuppression: Album " + request.getParameter("album") + " supprimé");
 			} else {
 				request.setAttribute("erreur", "Album non supprimé");
