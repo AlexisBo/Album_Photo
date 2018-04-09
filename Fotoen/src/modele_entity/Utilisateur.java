@@ -1,5 +1,6 @@
 package modele_entity;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Observer;
 
 import modele_DAO.AlbumDAO;
 import modele_DAO.CommentaireDAO;
+import modele_DAO.GenericDAO;
 
 public class Utilisateur implements Observer {
 	private int id;
@@ -39,6 +41,11 @@ public class Utilisateur implements Observer {
 		this.albums = new ArrayList<>();
 		this.albums.add(new Album("Courant", "Ce dossier est votre premier album de medias", id, true,
 				new Date(new java.util.Date().getTime())));
+
+		File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + this.pseudo + "/" + this.albums.get(0).getNom());
+		if(!file.exists()) {
+			file.mkdir();
+		}
 	}
 
 	@Override

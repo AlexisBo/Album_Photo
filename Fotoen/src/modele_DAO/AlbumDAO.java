@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modele_entity.Album;
-import modele_entity.Utilisateur;
 
 public class AlbumDAO extends GenericDAO {
 
@@ -37,33 +36,38 @@ public class AlbumDAO extends GenericDAO {
 		return album;
 	}
 
-	public int supprimer(String nom) {
-		int resultat = 1;
+	public int supprimer(int i, String nom) {
+		int resultat = 0;
 
 		loadDatabase();
 
 		try {
-			String requete = "DELETE FROM Album WHERE nom = ?;";
+			String requete = "DELETE FROM Album WHERE nom = ? AND id_utilisateur = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setString(1, nom);
-			requeteSt.executeQuery();
+			requeteSt.setInt(1, i);
+			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultat;
 	}
 
-	public int setCourant(String nom) {
+	public int setCourant(int i, String nom) {
 		int resultat = 0;
 		
 		loadDatabase();
 
 		try {
-			String requete = "UPDATE Album SET courant = 0 WHERE courant = 1;";
-			String requete2 = "UPDATE Album SET courant = 1 WHERE nom = ?;";
+			String requete = "UPDATE Album SET courant = 0 WHERE courant = 1 AND id_utilisateur = ?;";
+			String requete2 = "UPDATE Album SET courant = 1 WHERE nom = ? AND id_utilisateur = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			PreparedStatement requeteSt2 = connexion.prepareStatement(requete2);
+			
+			requeteSt.setInt(1, i);
 			requeteSt2.setString(1, nom);
+			requeteSt2.setInt(2, i);
+			
 			requeteSt.executeUpdate();
 			resultat = requeteSt2.executeUpdate();
 		} catch (SQLException e) {

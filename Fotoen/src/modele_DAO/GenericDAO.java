@@ -7,6 +7,7 @@ import java.sql.Connection;
 public class GenericDAO {
 	private static String driver;
 	private static String url, login, passwd;
+	public static final String MEDIAS_CHEMIN_ABSOLUE = "/Fotoen/WEB-INF/ressources/medias/";
 	protected static Connection connexion;
 
 	protected void loadDatabase() {

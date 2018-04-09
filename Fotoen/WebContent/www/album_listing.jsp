@@ -76,22 +76,18 @@
 									</c:otherwise>
 								</c:choose>
 
-								<input type="hidden" name="album" value="${album['nom']}">
 								<p class="card-text text-primary" style="font-size: 20px">
 									<c:out value="${album['description']}" />
 								</p>
-								<a href="consulter" class="btn btn-primary">Consulter</a>
+								<a href="consulter?idUtilisateur=${utilisateur['id']}album=${album['nom']}" class="btn btn-primary">Consulter</a>
 								<button class="btn btn-primary dropdown-toggle"
 									data-toggle="dropdown" contenteditable="true"
 									style="float: right">Réglages</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="albumCourant"
-										name="albumCourant" data-value="${album['nom']}">Définir
+									<a class="dropdown-item" href="albumCourant?idUtilisateur=${utilisateur['id']}album=${album['nom']}">Définir
 										dossier courant</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="albumSuppression"
-										name="albumSuppression" data-value="${album['nom']}"
-										style="background-color: red; color: white;">Supprimer
+								<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="albumSuppression?idUtilisateur=${utilisateur['id']}album=${album['nom']}" style="background-color: red; color: white;">Supprimer
 										l'album</a>
 								</div>
 							</div>

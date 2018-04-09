@@ -1,5 +1,6 @@
 package controleur;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele_DAO.AlbumDAO;
+import modele_DAO.GenericDAO;
 import modele_DAO.UtilisateurDAO;
-import modele_entity.Album;
 import modele_entity.Utilisateur;
 
 @WebServlet("/GestionUtilisateur")
@@ -60,6 +61,8 @@ public class GestionUtilisateur extends HttpServlet {
 			if (utilisateur != null) {
 				chemin = "/www/album_listing.jsp";
 				utilisateur.insertAlbums();
+				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
+				file.mkdir();
 				System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo() + " inscrit");
 			} else {
 				request.setAttribute("erreur", "Inscription non valide");
