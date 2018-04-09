@@ -14,6 +14,7 @@ public class MediaDAO extends GenericDAO {
 
 	}
 	
+	//récupérer les médias d'un user
 	public List<Media> getMediasByUtilisateur(int idUtilisateur){
 		List<Media> medias = new ArrayList<Media>();
 
@@ -34,6 +35,7 @@ public class MediaDAO extends GenericDAO {
 		return medias;
 	}
 	
+	//récupérer liste média
 	public List<Media> getMediasByAlbum(int idAlbum){
 		List<Media> medias = new ArrayList<Media>();
 
@@ -54,6 +56,7 @@ public class MediaDAO extends GenericDAO {
 		return medias;
 	}
 
+	//visualiser un média
 	public Media visualiser(String lien) {
 		Media media = null;
 
@@ -76,6 +79,7 @@ public class MediaDAO extends GenericDAO {
 		return media;
 	}
 
+	//supprimer un média
 	public void supprimer(String lien) {
 
 		loadDatabase();
@@ -89,6 +93,8 @@ public class MediaDAO extends GenericDAO {
 			e.printStackTrace();
 		}
 	}
+
+	//ajouter un média
 	public int insert(Media media) {
 		int resultat = 0;
 

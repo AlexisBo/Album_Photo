@@ -35,6 +35,7 @@ public class GestionUtilisateur extends HttpServlet {
 		traitement(request, response);
 	}
 
+	//traitement de l'inscription et de la connection d'un user
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

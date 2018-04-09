@@ -40,6 +40,7 @@ public class GestionPhotos extends HttpServlet {
 		traitement(request, response);
 	}
 
+	//traite les différente actions exercées sur la vue (suppréssion, ajout, consultation, visualisation, ...)
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

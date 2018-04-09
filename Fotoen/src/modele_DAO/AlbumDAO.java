@@ -14,6 +14,7 @@ public class AlbumDAO extends GenericDAO {
 
 	}
 
+	//récupérer album par nom
 	public Album getAlbumByName(String nom) {
 		Album album = null;
 
@@ -36,6 +37,7 @@ public class AlbumDAO extends GenericDAO {
 		return album;
 	}
 
+	//supprimer album
 	public int supprimer(int i, String nom) {
 		int resultat = 0;
 
@@ -53,6 +55,7 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
+	//définir album courant
 	public int setCourant(int i, String nom) {
 		int resultat = 0;
 		
@@ -76,6 +79,7 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
+	//récupérer liste album par user
 	public List<Album> getAlbums(int idAdmin) {
 		List<Album> albums = new ArrayList<Album>();
 
@@ -97,6 +101,7 @@ public class AlbumDAO extends GenericDAO {
 		return albums;
 	}
 
+	//ajouter album
 	public int insert(Album album) {
 		int resultat = 0;
 
