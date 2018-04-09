@@ -54,7 +54,7 @@ public class AlbumDAO extends GenericDAO {
 	}
 
 	public int setCourant(String nom) {
-		int resultat = 1;
+		int resultat = 0;
 		
 		loadDatabase();
 
@@ -64,8 +64,8 @@ public class AlbumDAO extends GenericDAO {
 			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			PreparedStatement requeteSt2 = connexion.prepareStatement(requete2);
 			requeteSt2.setString(1, nom);
-			requeteSt.executeQuery();
-			requeteSt2.executeQuery();
+			requeteSt.executeUpdate();
+			resultat = requeteSt2.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
