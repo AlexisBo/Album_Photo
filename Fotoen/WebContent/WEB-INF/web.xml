@@ -61,6 +61,6 @@
 
 	<servlet-mapping>
 		<servlet-name>gestionPhotos</servlet-name>
-		<url-pattern>/www/consulter</url-pattern>
+		<url-pattern>/www/consulterAlbum</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -79,7 +79,7 @@
 								<p class="card-text text-primary" style="font-size: 20px">
 									<c:out value="${album['description']}" />
 								</p>
-								<a href="consulter?idUtilisateur=${utilisateur['id']}album=${album['nom']}" class="btn btn-primary">Consulter</a>
+								<a href="consulterAlbum?idUtilisateur=${utilisateur['id']}album=${album['nom']}" class="btn btn-primary">Consulter</a>
 								<button class="btn btn-primary dropdown-toggle"
 									data-toggle="dropdown" contenteditable="true"
 									style="float: right">Réglages</button>

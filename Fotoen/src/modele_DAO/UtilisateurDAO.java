@@ -13,6 +13,28 @@ public class UtilisateurDAO extends GenericDAO {
 
 	}
 
+	public Utilisateur getUtilisateurById(int id) {
+		Utilisateur utilisateur = null;
+
+		loadDatabase();
+
+		try {
+			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE id=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			requeteSt.setInt(1, id);
+			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"),
+						rslt.getString("mdp"), rslt.getString("telephone"), rslt.getDate("dateNaissance"));
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
+
 	/**
 	 * @brief Prendre en compte une connexion
 	 * @param [String
@@ -72,27 +94,5 @@ public class UtilisateurDAO extends GenericDAO {
 		}
 
 		return null;
-	}
-
-	public Utilisateur getUtilisateurById(int id) {
-		Utilisateur utilisateur = null;
-
-		loadDatabase();
-
-		try {
-			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE id=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setInt(1, id);
-			ResultSet rslt = requeteSt.executeQuery();
-
-			while (rslt.next()) {
-				utilisateur = new Utilisateur(rslt.getInt("id"), rslt.getString("pseudo"), rslt.getString("email"),
-						rslt.getString("mdp"), rslt.getString("telephone"), rslt.getDate("dateNaissance"));
-				break;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return utilisateur;
 	}
 }

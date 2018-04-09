@@ -14,7 +14,7 @@ public class AlbumDAO extends GenericDAO {
 
 	}
 
-	public Album visualiser(String nom) {
+	public Album getAlbumByName(String nom) {
 		Album album = null;
 
 		loadDatabase();

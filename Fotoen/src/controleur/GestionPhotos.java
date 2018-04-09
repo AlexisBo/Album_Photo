@@ -21,11 +21,13 @@ public class GestionPhotos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	UtilisateurDAO utilisateurDAO;
+	AlbumDAO albumDAO;
 	MediaDAO mediaDAO;
 
 	public void init() {
 
 		utilisateurDAO = new UtilisateurDAO();
+		albumDAO = new AlbumDAO();
 		mediaDAO = new MediaDAO();
 
 	}
@@ -44,6 +46,14 @@ public class GestionPhotos extends HttpServlet {
 		String chemin = "/www/error.jsp";
 		String[] splits = request.getServletPath().split("/");
 		String operation = splits[splits.length - 1];
+		
+		// Go Page
+		if(operation.equals("consulterAlbum")) {
+			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			request.setAttribute("album", albumDAO.getAlbumByName(request.getParameter("album")));
+			chemin = "/www/album.jsp";
+			System.err.println("consulterAlbum: go album.jsp");
+		}
 
 		// Ajout d'une photo
 		if (operation.equals("photoAjout")) {
