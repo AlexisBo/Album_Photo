@@ -13,6 +13,7 @@ public class UtilisateurDAO extends GenericDAO {
 
 	}
 
+	//récupérer user
 	public Utilisateur getUtilisateurById(int id) {
 		Utilisateur utilisateur = null;
 
@@ -64,6 +65,7 @@ public class UtilisateurDAO extends GenericDAO {
 		return utilisateur;
 	}
 
+	//inscription user
 	public Utilisateur sInscrire(Utilisateur utilisateur) {
 		loadDatabase();
 
