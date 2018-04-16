@@ -20,8 +20,8 @@ public class UtilisateurDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE id=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE id=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, id);
 			ResultSet rslt = requeteSt.executeQuery();
 
@@ -48,8 +48,8 @@ public class UtilisateurDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE email=? AND mdp=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT id, pseudo, email, mdp, telephone, dateNaissance FROM Utilisateur WHERE email=? AND mdp=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setString(1, email);
 			requeteSt.setString(2, password);
 			ResultSet rslt = requeteSt.executeQuery();
@@ -95,6 +95,32 @@ public class UtilisateurDAO extends GenericDAO {
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+
+
+	//update user
+	public Utilisateur sUpdate(Utilisateur utilisateur) {
+		loadDatabase();
+
+		try {
+
+			PreparedStatement requeteSt = connexion.prepareStatement(				
+				"UPDATE utilisateur SET pseudo = ?, email = ?, mdp = ?, telephone = ?, dateNaissance = ? WHERE id = ?;",
+				Statement.RETURN_GENERATED_KEYS);
+
+			requeteSt.setString(1, utilisateur.getPseudo());
+			requeteSt.setString(2, utilisateur.getEmail());
+			requeteSt.setString(3, utilisateur.getMdp());
+			requeteSt.setString(4, utilisateur.getTelephone());
+			requeteSt.setDate(5, utilisateur.getDateNaissance());
+			requeteSt.setId(6, utilisateur.getId());
+
+			requeteSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 }
