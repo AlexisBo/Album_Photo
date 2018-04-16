@@ -59,7 +59,8 @@ public class GestionUtilisateur extends HttpServlet {
 					request.getParameter("mdp"), request.getParameter("telephone"), date);
 
 			utilisateur = utilisateurDAO.sInscrire(utilisateur);
-			if (utilisateur != null) {
+			
+			if (utilisateur != null && request.getParameter("mdpConfirmation") == request.getParameter("mdp")) {
 				chemin = "/www/album_listing.jsp";
 				utilisateur.insertAlbums();
 				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
