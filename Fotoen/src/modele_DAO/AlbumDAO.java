@@ -15,12 +15,8 @@ public class AlbumDAO extends GenericDAO {
 
 	}
 
-<<<<<<< HEAD
 	public Album getAlbumById(int idAlbum) {
-=======
 	//récupérer album par nom
-	public Album getAlbumByName(String nom) {
->>>>>>> 22a7451f989959fa9c99fb4399ceb74ea47eacbb
 		Album album = null;
 
 		loadDatabase();
@@ -42,12 +38,9 @@ public class AlbumDAO extends GenericDAO {
 		return album;
 	}
 
-<<<<<<< HEAD
+
 	public int supprimer(int idAlbum) {
-=======
 	//supprimer album
-	public int supprimer(int i, String nom) {
->>>>>>> 22a7451f989959fa9c99fb4399ceb74ea47eacbb
 		int resultat = 0;
 
 		loadDatabase();
@@ -63,12 +56,9 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
-<<<<<<< HEAD
+
 	public int setCourant(int idUtilisateur, int idAlbum) {
-=======
 	//définir album courant
-	public int setCourant(int i, String nom) {
->>>>>>> 22a7451f989959fa9c99fb4399ceb74ea47eacbb
 		int resultat = 0;
 		
 		loadDatabase();
