@@ -15,6 +15,11 @@
 	</welcome-file-list>
 
 	<servlet>
+		<servlet-name>gestionNavigations</servlet-name>
+		<servlet-class>controleur.GestionNavigations</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>gestionUtilisateur</servlet-name>
 		<servlet-class>controleur.GestionUtilisateur</servlet-class>
 	</servlet>
@@ -45,6 +50,16 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/profil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/updateProfil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
 		<servlet-name>gestionAlbums</servlet-name>
 		<url-pattern>/www/albumAjout</url-pattern>
 	</servlet-mapping>
@@ -60,7 +75,12 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>gestionPhotos</servlet-name>
+		<servlet-name>gestionNavigations</servlet-name>
 		<url-pattern>/www/consulterAlbum</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionNavigations</servlet-name>
+		<url-pattern>/www/accueil</url-pattern>
 	</servlet-mapping>
 </web-app>

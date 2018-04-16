@@ -100,7 +100,9 @@ public class UtilisateurDAO extends GenericDAO {
 
 
 	//update user
-	public Utilisateur sUpdate(Utilisateur utilisateur) {
+	public int sUpdate(Utilisateur utilisateur) {
+		int resultat = 0;
+		
 		loadDatabase();
 
 		try {
@@ -114,13 +116,13 @@ public class UtilisateurDAO extends GenericDAO {
 			requeteSt.setString(3, utilisateur.getMdp());
 			requeteSt.setString(4, utilisateur.getTelephone());
 			requeteSt.setDate(5, utilisateur.getDateNaissance());
-			requeteSt.setId(6, utilisateur.getId());
+			requeteSt.setInt(6, utilisateur.getId());
 
-			requeteSt.executeUpdate();
+			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return resultat;
 	}
 }

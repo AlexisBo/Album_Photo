@@ -35,7 +35,7 @@ public class GestionUtilisateur extends HttpServlet {
 		traitement(request, response);
 	}
 
-	//traitement de l'inscription et de la connection d'un user
+	// traitement de l'inscription et de la connection d'un user
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -45,25 +45,15 @@ public class GestionUtilisateur extends HttpServlet {
 
 		// Gestion de l'inscription
 		if (operation.equals("inscription")) {
-			String stringDate = request.getParameter("dateNaissance");
-			String[] dates = null;
-			if (stringDate.contains("-")) {
-				dates = stringDate.split("-");
-			} else if (stringDate.contains("/")) {
-				dates = stringDate.split("/");
-			}
-			Date date = new Date((Integer.parseInt(dates[0]) - 1900), (Integer.parseInt(dates[1]) - 1),
-					Integer.parseInt(dates[2]));
-
 			Utilisateur utilisateur = new Utilisateur(request.getParameter("pseudo"), request.getParameter("email"),
-					request.getParameter("mdp"), request.getParameter("telephone"), date);
+					request.getParameter("mdp"), request.getParameter("telephone"), this.setDate(request));
 
 			utilisateur = utilisateurDAO.sInscrire(utilisateur);
 			if (utilisateur != null) {
 				chemin = "/www/album_listing.jsp";
 				utilisateur.insertAlbums();
 				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
-				if(file.mkdir()) {
+				if (file.mkdir()) {
 					System.err.println("Creation dossier: Utilisateur " + utilisateur.getPseudo() + " créée");
 				}
 				System.err.println("Inscription: Utilisateur " + utilisateur.getPseudo() + " inscrit");
@@ -73,19 +63,23 @@ public class GestionUtilisateur extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateur);
 		}
 
-		// Gestion de modif
-		if (operation.equals("profil")) {			
-
-			Utilisateur utilisateur = utilisateurDAO.sUpdate(utilisateur);
-
-			if (utilisateur != null) {
-				chemin = "/www/album_listing.jsp";
+		// Visualisation du profil
+		if (operation.equals("profil")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			chemin = "/www/profil.jsp";
+			System.err.println("consulterProfil: go album.jsp");
+		}
+		
+		if (operation.equals("updateProfil")) {
+			Utilisateur utilisateur = new Utilisateur(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"), request.getParameter("telephone"), this.setDate(request));
+			if (utilisateurDAO.sUpdate(utilisateur) != 0) {
+				chemin = "/www/profil.jsp";
 				System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");
 			} else {
 				request.setAttribute("utilisateur", null);
 				request.setAttribute("erreur", "Profil non modifié");
 			}
-			request.setAttribute("utilisateur", utilisateur);			
 		}
 
 		// Gestion de la connexion
@@ -110,5 +104,18 @@ public class GestionUtilisateur extends HttpServlet {
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
+	}
+	
+	private Date setDate(HttpServletRequest request) {
+		String stringDate = request.getParameter("dateNaissance");
+		String[] dates = null;
+		if (stringDate.contains("-")) {
+			dates = stringDate.split("-");
+		} else if (stringDate.contains("/")) {
+			dates = stringDate.split("/");
+		}
+		Date date = new Date((Integer.parseInt(dates[0]) - 1900), (Integer.parseInt(dates[1]) - 1),
+				Integer.parseInt(dates[2]));
+		return date;
 	}
 }

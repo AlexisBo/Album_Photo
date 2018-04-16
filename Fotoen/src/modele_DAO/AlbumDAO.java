@@ -16,15 +16,38 @@ public class AlbumDAO extends GenericDAO {
 	}
 
 	public Album getAlbumById(int idAlbum) {
-	//récupérer album par nom
+	//récupérer album par id
 		Album album = null;
 
 		loadDatabase();
 
 		try {
-			String requete = "SELECT nom, description, courant, date, id_utilisateur FROM Utilisateur WHERE id = ?;";
+			String requete = "SELECT nom, description, courant, date, id_utilisateur FROM Album WHERE id = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, idAlbum);
+			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				album = new Album(rslt.getString("nom"), rslt.getString("description"), rslt.getInt("id_utilisateur"),
+						rslt.getBoolean("courant"), rslt.getDate("date"));
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return album;
+	}
+
+	public Album getAlbumCurrent(int idUtilisateur) {
+	//récupérer album courrant
+		Album album = null;
+
+		loadDatabase();
+
+		try {
+			String requete = "SELECT nom, description, courant, date, id_utilisateur FROM Album WHERE courant = 1 AND id_utilisateur = ?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setInt(1, idUtilisateur);
 			ResultSet rslt = requeteSt.executeQuery();
 
 			while (rslt.next()) {
