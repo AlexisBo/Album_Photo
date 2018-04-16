@@ -1,6 +1,7 @@
 package controleur;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele_DAO.AlbumDAO;
-import modele_entity.Album;
 import modele_DAO.MediaDAO;
-import modele_entity.Media;
 import modele_DAO.UtilisateurDAO;
+import modele_entity.Album;
+import modele_entity.Media;
 import modele_entity.Utilisateur;
 
 @WebServlet("/ConsulterAlbum")
@@ -50,7 +51,7 @@ public class GestionPhotos extends HttpServlet {
 		// Go Page
 		if(operation.equals("consulterAlbum")) {
 			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
-			request.setAttribute("album", albumDAO.getAlbumByName(request.getParameter("album")));
+			request.setAttribute("album", albumDAO.getAlbumById(Integer.parseInt(request.getParameter("album"))));
 			chemin = "/www/album.jsp";
 			System.err.println("consulterAlbum: go album.jsp");
 		}
@@ -74,10 +75,8 @@ public class GestionPhotos extends HttpServlet {
 		}
 
 		//Visualisation d'une photo
-		if (operation.equals("photoVisualiser")) {
-			String media = request.getParameter("media");
-			
-			Album m = mediaDAO.visualiser(media);
+		if (operation.equals("photoVisualiser")) {			
+			Album m = mediaDAO.getMediasByUtilisateur(Integer.parseInt(request.getParameter("media")));
 
 			if (m != null) {
 				request.setAttribute("media", m);

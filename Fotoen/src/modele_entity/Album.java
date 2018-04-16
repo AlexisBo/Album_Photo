@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import modele_DAO.AlbumDAO;
 import modele_DAO.MediaDAO;
 
 public class Album extends Observable {
@@ -18,6 +19,15 @@ public class Album extends Observable {
 	private List<Media> medias;
 	
 	public Album(String nom, String description, int idAdmin, boolean courant, Date date) {
+		setAlbum(nom, description, idAdmin, courant, date);
+	}
+	
+	public Album(int id, String nom, String description, int idAdmin, boolean courant, Date date) {
+		this.id = id;
+		setAlbum(nom, description, idAdmin, courant, date);
+	}
+	
+	private void setAlbum(String nom, String description, int idAdmin, boolean courant, Date date) {
 		this.nom = nom;
 		this.description = description;
 		this.idAdmin = idAdmin;
@@ -76,7 +86,7 @@ public class Album extends Observable {
 	}
 
 	public List<Utilisateur> getViewers() {
-		return viewers;
+		return new AlbumDAO().getViewersByAlbum(this.id, this.idAdmin);
 	}
 
 	public void setViewers(List<Utilisateur> viewers) {

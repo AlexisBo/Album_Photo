@@ -3,8 +3,6 @@ package controleur;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,7 +66,7 @@ public class GestionAlbums extends HttpServlet {
 		if (operation.equals("albumCourant")) {
 			System.err.println("album courant recup: " + request.getParameter("album"));
 
-			if (albumDAO.setCourant(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("album")) != 0) {
+			if (albumDAO.setCourant(Integer.parseInt(request.getParameter("idUtilisateur")), Integer.parseInt(request.getParameter("album"))) != 0) {
 				chemin = "/www/album_listing.jsp";
 				request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
 				System.err.println("AlbumCourant: Album " + request.getParameter("album") + " courant");
@@ -78,11 +76,10 @@ public class GestionAlbums extends HttpServlet {
 		}
 
 		if (operation.equals("albumSuppression")) {
-
-			if (albumDAO.supprimer(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("album")) != 0) {
+			if (albumDAO.supprimer(Integer.parseInt(request.getParameter("album"))) != 0) {
 				Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
 				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + request.getParameter("album"));
-				file.mkdir();
+				file.delete();
 				chemin = "/www/album_listing.jsp";
 				request.setAttribute("utilisateur", utilisateur);
 				System.err.println("albumSuppression: Album " + request.getParameter("album") + " supprimé");

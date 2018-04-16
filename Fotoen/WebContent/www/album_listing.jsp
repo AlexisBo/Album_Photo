@@ -79,15 +79,22 @@
 								<p class="card-text text-primary" style="font-size: 20px">
 									<c:out value="${album['description']}" />
 								</p>
-								<a href="consulterAlbum?idUtilisateur=${utilisateur['id']}album=${album['nom']}" class="btn btn-primary">Consulter</a>
+								<button class="btn btn-primary"
+									id="autorisations">Autorisations</button>
+								<a
+									href="consulterAlbum?idUtilisateur=${utilisateur['id']}&album=${album['id']}"
+									class="btn btn-primary">Consulter</a>
 								<button class="btn btn-primary dropdown-toggle"
 									data-toggle="dropdown" contenteditable="true"
-									style="float: right">Réglages</button>
+									style="float:right">Réglages</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="albumCourant?idUtilisateur=${utilisateur['id']}album=${album['nom']}">Définir
+									<a class="dropdown-item"
+										href="albumCourant?idUtilisateur=${utilisateur['id']}&album=${album['id']}">Définir
 										dossier courant</a>
-								<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="albumSuppression?idUtilisateur=${utilisateur['id']}album=${album['nom']}" style="background-color: red; color: white;">Supprimer
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item"
+										href="albumSuppression?idUtilisateur=${utilisateur['id']}&album=${album['id']}"
+										style="background-color: red; color: white;">Supprimer
 										l'album</a>
 								</div>
 							</div>
@@ -131,6 +138,43 @@
 			</div>
 		</div>
 	</div>
+
+	<dialog id="AutorisationsDialog">
+	<form method="dialog">
+		<section>
+		<p>
+			<label for="favAnimal">Favorite animal:</label> <select
+				id="favAnimal">
+				<option></option>
+				<option>Brine shrimp</option>
+				<option>Red panda</option>
+				<option>Spider monkey</option>
+			</select>
+		</p>
+		</section>
+		<button id="annuler" type="reset">Annuler</button>
+		<button type="submit">Valider</button>
+	</form>
+	</dialog>
+
+	<script type="text/javascript">
+		(function() {
+			var autorisations = document.getElementById('autorisations');
+			var annuler = document.getElementById('annuler');
+			var autorisationsDialog = document
+					.getElementById('AutorisationsDialog');
+
+			// Update button opens a modal dialog
+			autorisations.addEventListener('click', function() {
+				autorisationsDialog.showModal();
+			});
+
+			// Form cancel button closes the dialog box
+			annuler.addEventListener('click', function() {
+				autorisationsDialog.closeModal();
+			});
+		})();
+	</script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
