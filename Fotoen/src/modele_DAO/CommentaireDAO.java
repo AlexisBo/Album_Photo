@@ -21,8 +21,8 @@ public class CommentaireDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT commentaire, evaluation, date, id_utilisateur, id_media, date FROM Commentaire WHERE id_utilisateur=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT commentaire, evaluation, date, id_utilisateur, id_media, date FROM Commentaire WHERE id_utilisateur=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, idUtilisateur);
 			ResultSet rslt = requeteSt.executeQuery();
 
@@ -42,8 +42,8 @@ public class CommentaireDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT commentaire, evaluation, date, id_utilisateur, id_media, date FROM Commentaire WHERE id_media=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT commentaire, evaluation, date, id_utilisateur, id_media, date FROM Commentaire WHERE id_media=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, idMedia);
 			ResultSet rslt = requeteSt.executeQuery();
 

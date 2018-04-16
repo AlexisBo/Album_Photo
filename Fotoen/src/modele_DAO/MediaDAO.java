@@ -13,64 +13,22 @@ public class MediaDAO extends GenericDAO {
 	public MediaDAO() {
 
 	}
-	
-	//récupérer les médias d'un user
-	public List<Media> getMediasByUtilisateur(int idUtilisateur){
-		List<Media> medias = new ArrayList<Media>();
 
-		loadDatabase();
-
-		try {
-			String requetePickUser = "SELECT description, lien, id_utilisateur, id_album FROM Media WHERE id_utilisateur=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setInt(1, idUtilisateur);
-			ResultSet rslt = requeteSt.executeQuery();
-
-			while (rslt.next()) {
-				medias.add(new Media(rslt.getString("lien"), rslt.getString("description"), rslt.getInt("id_utilisateur"), rslt.getInt("id_album")));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return medias;
-	}
-	
-	//récupérer liste média
-	public List<Media> getMediasByAlbum(int idAlbum){
-		List<Media> medias = new ArrayList<Media>();
-
-		loadDatabase();
-
-		try {
-			String requetePickUser = "SELECT description, lien, id_utilisateur, id_album FROM Media WHERE id_album=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setInt(1, idAlbum);
-			ResultSet rslt = requeteSt.executeQuery();
-
-			while (rslt.next()) {
-				medias.add(new Media(rslt.getString("lien"), rslt.getString("description"), rslt.getInt("id_utilisateur"), rslt.getInt("id_album")));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return medias;
-	}
-
-	//visualiser un média
-	public Media visualiser(String lien) {
+	// récupérer les médias d'un user
+	public Media getMediaById(int idMedia) {
 		Media media = null;
 
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT lien, description, id_utilisateur, id_album FROM Media WHERE lien = ?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setString(1, lien);
+			String requete = "SELECT id, lien, description, id_utilisateur, id_album FROM Media WHERE id=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setInt(1, idMedia);
 			ResultSet rslt = requeteSt.executeQuery();
 
 			while (rslt.next()) {
-				media = new Media(rslt.getString("lien"), rslt.getString("description"), rslt.getInt("id_utilisateur"),
-						rslt.getInt("id_album"));
+				media = new Media(rslt.getInt("id"), rslt.getString("lien"), rslt.getString("description"),
+						rslt.getInt("id_utilisateur"), rslt.getInt("id_album"));
 				break;
 			}
 		} catch (SQLException e) {
@@ -79,7 +37,29 @@ public class MediaDAO extends GenericDAO {
 		return media;
 	}
 
-	//supprimer un média
+	// récupérer liste média
+	public List<Media> getMediasByAlbum(int idAlbum) {
+		List<Media> medias = new ArrayList<Media>();
+
+		loadDatabase();
+
+		try {
+			String requete = "SELECT description, lien, id_utilisateur, id_album FROM Media WHERE id_album=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setInt(1, idAlbum);
+			ResultSet rslt = requeteSt.executeQuery();
+
+			while (rslt.next()) {
+				medias.add(new Media(rslt.getString("lien"), rslt.getString("description"),
+						rslt.getInt("id_utilisateur"), rslt.getInt("id_album")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return medias;
+	}
+
+	// supprimer un média
 	public void supprimer(String lien) {
 
 		loadDatabase();
@@ -94,21 +74,19 @@ public class MediaDAO extends GenericDAO {
 		}
 	}
 
-	//ajouter un média
+	// ajouter un média
 	public int insert(Media media) {
 		int resultat = 0;
 
 		loadDatabase();
 
 		try {
-
 			PreparedStatement requeteSt = connexion.prepareStatement(
 					"INSERT INTO Media (lien, description, id_utilisateur, id_album) VALUES (?, ?, ?, ?);");
-
-			requeteSt.setString(1, album.getLien());
-			requeteSt.setString(2, album.getDescription());
-			requeteSt.setInt(5, album.getIdUtilisateur());
-			requeteSt.setInt(5, album.getIdAlbum());
+			requeteSt.setString(1, media.getLien());
+			requeteSt.setString(2, media.getDescription());
+			requeteSt.setInt(3, media.getIdUtilisateur());
+			requeteSt.setInt(4, media.getIdAlbum());
 			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

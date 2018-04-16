@@ -58,46 +58,50 @@ public class GestionPhotos extends HttpServlet {
 		}
 
 		// Ajout d'une photo
-		if (operation.equals("photoAjout")) {
-			System.err.println("Verification " + request.getParameter("idUtilisateur"));
-			Media media = new Media(request.getParameter("lien"), request.getParameter("description"),
-					Integer.parseInt(request.getParameter("idUtilisateur"), Integer.parseInt(request.getParameter("idAlbum"))), false, new Date(new java.util.Date().getTime()));
-
-			if (mediaDAO.insert(media) != 0) {
-				Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
-				
-				request.setAttribute("utilisateur", utilisateur);
-				chemin = "/www/album_listing.jsp";
-				System.err.println("AjoutAlbum: Album " + media.getLien() + " ajout�");
-			} else {
-				request.setAttribute("utilisateur", null);
-				request.setAttribute("erreur", "Album non valide");
-			}
-		}
-
+//		if (operation.equals("photoAjout")) {
+//			System.err.println("Verification " + request.getParameter("idUtilisateur"));
+//			Media media = new Media(request.getParameter("lien"), request.getParameter("description"),
+//					Integer.parseInt(request.getParameter("idUtilisateur"), Integer.parseInt(request.getParameter("idAlbum"))), false, new Date(new java.util.Date().getTime()));
+//
+//			if (mediaDAO.insert(media) != 0) {
+//				Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
+//				
+//				request.setAttribute("utilisateur", utilisateur);
+//				chemin = "/www/album_listing.jsp";
+//				System.err.println("AjoutAlbum: Album " + media.getLien() + " ajout�");
+//			} else {
+//				request.setAttribute("utilisateur", null);
+//				request.setAttribute("erreur", "Album non valide");
+//			}
+//		}
+//
 		//Visualisation d'une photo
-		if (operation.equals("photoVisualiser")) {			
-			Album m = mediaDAO.getMediasByUtilisateur(Integer.parseInt(request.getParameter("media")));
+		if (operation.equals("consulterPhoto")) {	
+			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));		
+			Media media = mediaDAO.getMediaById(Integer.parseInt(request.getParameter("media")));
 
-			if (m != null) {
-				request.setAttribute("media", m);
+			if (media != null) {
+				request.setAttribute("media", media);
+				chemin = "/www/media.jsp";
+				System.err.println("Visualisation: Photo " + media.getLien());
 			} else {
-				request.setAttribute("media", null);
+				request.setAttribute("erreur", "Photo non consultable");
 			}
 		}
+//
+//		//Suppression d'une photo
+//		if (operation.equals("photoSuppression")) {
+//
+//			if (mediaDAO.supprimer(request.getParameter("media")) != 0) {				
+//				chemin = "/www/album_listing.jsp";
+//				System.err.println("mediaSuppression " + request.getParameter("mediaSuppression") + " ajouté");
+//			} else {
+//				request.setAttribute("erreur", "Média non supprimé");
+//			}
+//			
+//			System.err.println("mediaSuppression data value" + request.getParameter("data-value") + " ajouté");
+//		}
 
-		//Suppression d'une photo
-		if (operation.equals("photoSuppression")) {
-
-			if (mediaDAO.supprimer(request.getParameter("media")) != 0) {				
-				chemin = "/www/album_listing.jsp";
-				System.err.println("mediaSuppression " + request.getParameter("mediaSuppression") + " ajouté");
-			} else {
-				request.setAttribute("erreur", "Média non supprimé");
-			}
-			
-			System.err.println("mediaSuppression data value" + request.getParameter("data-value") + " ajouté");
-		}
-		this.getServletContext().getRequestDispatcher("/www/album.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
 	}
 }

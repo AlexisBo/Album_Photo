@@ -1,5 +1,6 @@
 package modele_entity;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +8,23 @@ import modele_DAO.CommentaireDAO;
 
 public class Media {
 
-
 	private int id;
 	private String lien;
 	private String description;
 	private int idUtilisateur;
 	private int idAlbum;
 	private List<Commentaire> commentaires;
-	
+
 	public Media(String lien, String description, int idUtilisateur, int idAlbum) {
+		setMedia(lien, description, idUtilisateur, idAlbum);
+	}
+
+	public Media(int id, String lien, String description, int idUtilisateur, int idAlbum) {
+		this.id = id;
+		setMedia(lien, description, idUtilisateur, idAlbum);
+	}
+
+	private void setMedia(String lien, String description, int idUtilisateur, int idAlbum) {
 		this.lien = lien;
 		this.description = description;
 		this.idUtilisateur = idUtilisateur;
@@ -27,7 +36,7 @@ public class Media {
 		return this.id;
 	}
 
-	public void setId(int id){
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -35,15 +44,15 @@ public class Media {
 		return this.lien;
 	}
 
-	public void setLien(String lien){
+	public void setLien(String lien) {
 		this.lien = lien;
 	}
 
-	public String getDescription(){
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description){
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

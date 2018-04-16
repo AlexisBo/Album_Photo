@@ -171,7 +171,7 @@
 
 			// Form cancel button closes the dialog box
 			annuler.addEventListener('click', function() {
-				autorisationsDialog.closeModal();
+				autorisationsDialog.hide();
 			});
 		})();
 	</script>

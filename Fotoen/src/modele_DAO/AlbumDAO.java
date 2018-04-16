@@ -22,8 +22,8 @@ public class AlbumDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT nom, description, courant, date, id_utilisateur FROM Utilisateur WHERE id = ?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT nom, description, courant, date, id_utilisateur FROM Utilisateur WHERE id = ?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, idAlbum);
 			ResultSet rslt = requeteSt.executeQuery();
 
@@ -87,8 +87,8 @@ public class AlbumDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT id, nom, description, courant, date, id_utilisateur FROM Album WHERE id_utilisateur=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
+			String requete = "SELECT id, nom, description, courant, date, id_utilisateur FROM Album WHERE id_utilisateur=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
 			requeteSt.setInt(1, idAdmin);
 			ResultSet rslt = requeteSt.executeQuery();
 
@@ -135,24 +135,24 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
-	public List<Utilisateur> getViewersByAlbum(int id, int idAdmin) {
+	public List<Utilisateur> getViewersByAlbum(int idAlbum, int idAdmin) {
 		List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 
 		loadDatabase();
 
 		try {
-			String requetePickUser = "SELECT id_viewer FROM liste_viewers_of_album WHERE id_utilisateur=?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requetePickUser);
-			requeteSt.setInt(1, idAdmin);
+			String requete = "SELECT id_viewer FROM liste_viewers_of_album WHERE id=? AND id_utilisateur=?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setInt(1, idAlbum);
+			requeteSt.setInt(2, idAdmin);
 			ResultSet rslt = requeteSt.executeQuery();
 
 			while (rslt.next()) {
-				albums.add(new Album(rslt.getInt("id"), rslt.getString("nom"), rslt.getString("description"),
-						rslt.getInt("id_utilisateur"), rslt.getBoolean("courant"), rslt.getDate("date")));
+				utilisateurs.add(new UtilisateurDAO().getUtilisateurById(rslt.getInt("id_viewer")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return albums;
+		return utilisateurs;
 	}
 }

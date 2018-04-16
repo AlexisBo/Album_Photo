@@ -4,14 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="/Fotoen/www/style/album.css"
+<link rel="stylesheet" href="/Fotoen/www/style/album_listing.css"
 	type="text/css">
 </head>
 
@@ -46,92 +45,15 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_1.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_5.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_3.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_4.jpg">
-					</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_6.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_7.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_8.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_9.jpg">
-					</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_10.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_11.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_12.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_13.jpg">
-					</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_15.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_2.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_14.jpg">
-					</a>
-				</div>
-				<div class="col-md-3 col-6 p-1">
-					<a href="#"> <img class="d-block img-fluid"
-						src="https://pingendo.github.io/templates/sections/assets/gallery_16.jpg">
-					</a>
-				</div>
+				<c:forEach items="${album.medias}" var="media">
+					<div class="col-md-3 col-6 p-1">
+						<a
+							href="consulterPhoto?idUtilisateur=${utilisateur['id']}&media=${media['id']}">
+							<img class="d-block img-fluid"
+							src="${media['lien']}">
+						</a>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
