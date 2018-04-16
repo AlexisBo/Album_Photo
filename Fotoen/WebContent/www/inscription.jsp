@@ -60,7 +60,7 @@
 								</div>
 								<div class="form-group">
 									<label>Confirmation mot de passe</label> <input
-										class="form-control" placeholder="confirmer mmot de passe"
+										class="form-control" placeholder="confirmer mot de passe"
 										name="mdpConfirmation" type="password">
 								</div>
 								<div class="form-group">
