@@ -73,6 +73,21 @@ public class GestionUtilisateur extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateur);
 		}
 
+		// Gestion de modif
+		if (operation.equals("profil")) {			
+
+			Utilisateur utilisateur = utilisateurDAO.sUpdate(utilisateur);
+
+			if (utilisateur != null) {
+				chemin = "/www/album_listing.jsp";
+				System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");
+			} else {
+				request.setAttribute("utilisateur", null);
+				request.setAttribute("erreur", "Profil non modifié");
+			}
+			request.setAttribute("utilisateur", utilisateur);			
+		}
+
 		// Gestion de la connexion
 		if (operation.equals("connexion")) {
 			Utilisateur utilisateur = utilisateurDAO.seConnecter(request.getParameter("email"),
