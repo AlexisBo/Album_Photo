@@ -54,7 +54,7 @@
 						<div class="col-md-12">
 							<h1 class="text-light" style="font-size: 80px">Vos Albums</h1>
 							<p class="text-light" style="font-size: 20px">Ici, vous
-								pouvez creer, consulter et supprimer vos albums photos.</p>
+								pouvez creer, consulter et supprimer vos albums medias.</p>
 						</div>
 					</div>
 				</div>

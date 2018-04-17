@@ -45,7 +45,7 @@
 						<b>Bienvenue sur Fotoen !</b>
 					</h1>
 					<p style="font-size: 25px;" class="py-3 text-dark">
-						Fotoen est un site d'album photo permettant de partager ses photos
+						Fotoen est un site d'album media permettant de partager ses medias
 						avec ses amis. <br>Pour commencer, connectez-vous ou
 						inscrivez-vous en cliquant ci-dessous.
 					</p>

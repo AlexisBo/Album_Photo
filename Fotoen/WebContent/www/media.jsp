@@ -50,7 +50,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="mb-4">*Titre photo*</h1>
+					<h1 class="mb-4">*Titre media*</h1>
 				</div>
 			</div>
 			<div class="row">
@@ -128,8 +128,7 @@
 							<label>Commentaire <br>
 							</label> <input type="email" class="form-control"
 								placeholder="Ajouter un commentaire"> <small
-								class="form-text text-muted">Donnez votre avis sur cette
-								photo</small>
+								class="form-text text-muted">Donnez votre avis sur ce media</small>
 						</div>
 						<button type="submit" class="btn btn-primary">Envoyer</button>
 					</form>

@@ -55,7 +55,7 @@
 								<c:out value="Bienvenue ${ utilisateur.pseudo }" />
 							</h1>
 							<p class="text-light" style="font-size: 20px">Ici, vous
-								pouvez créer et consulter vos albums photos.</p>
+								pouvez créer et consulter vos albums medias.</p>
 						</div>
 					</div>
 				</div>

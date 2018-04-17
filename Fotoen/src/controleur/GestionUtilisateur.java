@@ -80,7 +80,7 @@ public class GestionUtilisateur extends HttpServlet {
 					chemin = "/www/profil.jsp";
 					System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");
 				} else {
-					request.setAttribute("utilisateur", null);
+					request.setAttribute("utilisateur", utilisateur);
 					request.setAttribute("erreur", "Profil non modifié");
 				}
 			} else {

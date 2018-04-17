@@ -50,7 +50,7 @@ public class GestionMedias extends HttpServlet {
 		String[] splits = request.getServletPath().split("/");
 		String operation = splits[splits.length - 1];
 
-		// Ajout d'une photo
+		// Ajout d'un media
 		if (operation.equals("mediaAjout")) {
 			Utilisateur utilisateur = utilisateurDAO
 					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
@@ -73,7 +73,7 @@ public class GestionMedias extends HttpServlet {
 			}
 		}
 
-		// Suppression d'une photo
+		// Suppression d'un media
 		if (operation.equals("mediaSuppression")) {
 			Utilisateur utilisateur = utilisateurDAO
 					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
