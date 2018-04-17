@@ -36,7 +36,7 @@ public class GestionNavigations extends HttpServlet {
 		traitement(request, response);
 	}
 
-	//traite les différentes actions exercées sur la vue (suppréssion, ajout, ...)
+	// traite les différentes actions exercées sur la vue (suppréssion, ajout, ...)
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -44,8 +44,9 @@ public class GestionNavigations extends HttpServlet {
 		String[] splits = request.getServletPath().split("/");
 		String operation = splits[splits.length - 1];
 
-		if(operation.equals("accueil")) {
-			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+		if (operation.equals("accueil")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
 			chemin = "/www/accueil.jsp";
 			System.err.println("consulterAccueil: go accueil.jsp");
 		}
@@ -57,15 +58,24 @@ public class GestionNavigations extends HttpServlet {
 			System.err.println("consulterProfil: go profil.jsp");
 		}
 
-		if(operation.equals("consulterAlbum")) {
-			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+		if (operation.equals("consulterAlbums")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			chemin = "/www/album_listing.jsp";
+			System.err.println("consulterAlbums: go album_listing.jsp");
+		}
+
+		if (operation.equals("consulterAlbum")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
 			request.setAttribute("album", albumDAO.getAlbumById(Integer.parseInt(request.getParameter("album"))));
 			chemin = "/www/album.jsp";
 			System.err.println("consulterAlbum: go album.jsp");
 		}
 
 		if (operation.equals("consulterMedia")) {
-			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
 			Media media = mediaDAO.getMediaById(Integer.parseInt(request.getParameter("media")));
 
 			if (media != null) {
@@ -76,7 +86,7 @@ public class GestionNavigations extends HttpServlet {
 				request.setAttribute("erreur", "Media non consultable");
 			}
 		}
-		
+
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);
 	}
 }

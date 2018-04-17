@@ -69,18 +69,23 @@ public class GestionUtilisateur extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateur);
 		}
 
-
-
 		if (operation.equals("profilUpdate")) {
 			Utilisateur utilisateur = new Utilisateur(Integer.parseInt(request.getParameter("idUtilisateur")),
 					request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"),
 					request.getParameter("telephone"), this.setDate(request.getParameter("dateNaissance")));
-			if (utilisateurDAO.sUpdate(utilisateur) != 0) {
-				chemin = "/www/profil.jsp";
-				System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");
+			
+			if (request.getParameter("mdpConfirmation").equals(request.getParameter("mdp"))) {
+				if (utilisateurDAO.sUpdate(utilisateur) != 0) {
+					request.setAttribute("utilisateur", utilisateur);
+					chemin = "/www/profil.jsp";
+					System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");
+				} else {
+					request.setAttribute("utilisateur", null);
+					request.setAttribute("erreur", "Profil non modifié");
+				}
 			} else {
 				request.setAttribute("utilisateur", null);
-				request.setAttribute("erreur", "Profil non modifié");
+				request.setAttribute("erreur", "Mot de passe non valide");
 			}
 		}
 

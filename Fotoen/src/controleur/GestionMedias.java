@@ -1,9 +1,5 @@
 package controleur;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,12 +7,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import modele_DAO.AlbumDAO;
 import modele_DAO.GenericDAO;
 import modele_DAO.MediaDAO;
 import modele_DAO.UtilisateurDAO;
+import modele_entity.Album;
+import modele_entity.Media;
+import modele_entity.Utilisateur;
 
 @WebServlet("/ConsulterAlbum")
 public class GestionMedias extends HttpServlet {
@@ -59,11 +57,13 @@ public class GestionMedias extends HttpServlet {
 
 			Album album = albumDAO.getAlbumCurrent(utilisateur.getId());
 
-			String path = GenericDAO.MEDIAS_CHEMIN_ABSOLUE + "melvin" + "\\" + "Courant" + "\\";
+			String path = GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getId() + "\\" + album.getNom() + "\\";
 
+			/* ENREGISTRER MEDIA DANS RESSOURCES */
+			
 			Media media = new Media(path, request.getParameter("description"), utilisateur.getId(), album.getId());
 
-			if (sauvegarde && mediaDAO.insert(media) != 0) {
+			if (mediaDAO.insert(media) != 0) {
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/media.jsp";
 				System.err.println("mediaAjout: Media " + media.getLien() + " ajouté");
@@ -76,7 +76,7 @@ public class GestionMedias extends HttpServlet {
 		// Suppression d'une photo
 		if (operation.equals("mediaSuppression")) {
 
-			if (mediaDAO.supprimer(request.getParameter("media")) != 0) {
+			if (mediaDAO.supprimer(Integer.parseInt(request.getParameter("media"))) != 0) {
 				chemin = "/www/album_listing.jsp";
 				System.err.println("mediaSuppression " + request.getParameter("mediaSuppression") + " ajoutÃ©");
 			} else {

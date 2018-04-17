@@ -27,7 +27,8 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="accueil?idUtilisateur=${utilisateur['id']}"><i
+		<a class="navbar-brand"
+			href="accueil?idUtilisateur=${utilisateur['id']}"><i
 			class="fa d-inline fa-lg fa-cloud"></i> <b>Fotoen</b></a>
 		<div class="collapse navbar-collapse text-center justify-content-end"
 			id="navbar2SupportedContent">
@@ -60,13 +61,15 @@
 						<div class="card-body p-5">
 							<h3 class="pb-3">Vos Informations</h3>
 							<form method="post" action="profilUpdate">
+								<input class="form-control" type="hidden"
+									value="${utilisateur['id']}" name="idUtilisateur">
 								<div class="form-group">
 									<label>Pseudo</label> <input class="form-control"
 										value="${utilisateur['pseudo']}" name="pseudo">
 								</div>
 								<div class="form-group">
 									<label>Mot de Passe</label> <input type="password" name="mdp"
-									class="form-control" placeholder="Password">
+										class="form-control" placeholder="Password">
 								</div>
 								<div class="form-group">
 									<label>Confirmation mot de passe</label> <input
@@ -127,28 +130,28 @@
 		</div>
 	</div>
 
-	<div id="popMedia" class="popCSS">
-		<div id="popupForm">
-			<form method="post" action="mediaAjout">
-				<img id="close"
-					src="https://icon-icons.com/icons2/936/PNG/512/cross-mark-on-a-black-circle-background_icon-icons.com_73605.png"
-					width="40px" onclick="media_hide();">
+<!-- 	<div id="popMedia" class="popCSS"> -->
+<!-- 		<div id="popupForm"> -->
+<!-- 			<form method="post" action="mediaAjout"> -->
+<!-- 				<img id="close" -->
+<!-- 					src="https://icon-icons.com/icons2/936/PNG/512/cross-mark-on-a-black-circle-background_icon-icons.com_73605.png" -->
+<!-- 					width="40px" onclick="media_hide();"> -->
 
-				<h2>Ajouter un media</h2>
-				<input class="form-control" type="hidden"
-					value="${utilisateur['id']}" name="idUtilisateur">
-				<div class="form-group">
-					<input type="file" name="media" accept="image/*">
-				</div>
-				<div class="form-group">
-					<label for="Textarea">Description</label>
-					<textarea class="form-control" name="description" rows="3"
-						placeholder="Ecrivez ici"></textarea>
-				</div>
-				<button type="submit" class="btn btn-primary">Ajouter</button>
-			</form>
-		</div>
-	</div>
+<!-- 				<h2>Ajouter un media</h2> -->
+<!-- 				<input class="form-control" type="hidden" -->
+<%-- 					value="${utilisateur['id']}" name="idUtilisateur"> --%>
+<!-- 				<div class="form-group"> -->
+<!-- 					<input type="file" name="media" accept="image/*"> -->
+<!-- 				</div> -->
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="Textarea">Description</label> -->
+<!-- 					<textarea class="form-control" name="description" rows="3" -->
+<!-- 						placeholder="Ecrivez ici"></textarea> -->
+<!-- 				</div> -->
+<!-- 				<button type="submit" class="btn btn-primary">Ajouter</button> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 	<script src="/Fotoen/www/js/connect_commun.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

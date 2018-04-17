@@ -108,15 +108,14 @@ public class UtilisateurDAO extends GenericDAO {
 		try {
 
 			PreparedStatement requeteSt = connexion.prepareStatement(				
-				"UPDATE utilisateur SET pseudo = ?, email = ?, mdp = ?, telephone = ?, dateNaissance = ? WHERE id = ?;",
+				"UPDATE Utilisateur SET pseudo = ?, email = ?, mdp = ?, telephone = ? WHERE id = ?;",
 				Statement.RETURN_GENERATED_KEYS);
 
 			requeteSt.setString(1, utilisateur.getPseudo());
 			requeteSt.setString(2, utilisateur.getEmail());
 			requeteSt.setString(3, utilisateur.getMdp());
 			requeteSt.setString(4, utilisateur.getTelephone());
-			requeteSt.setDate(5, utilisateur.getDateNaissance());
-			requeteSt.setInt(6, utilisateur.getId());
+			requeteSt.setInt(5, utilisateur.getId());
 
 			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {

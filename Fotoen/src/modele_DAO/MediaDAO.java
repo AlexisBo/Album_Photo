@@ -60,18 +60,20 @@ public class MediaDAO extends GenericDAO {
 	}
 
 	// supprimer un média
-	public void supprimer(String lien) {
+	public int supprimer(int idMedia) {
+		int resultat = 0;
 
 		loadDatabase();
 
 		try {
-			String requete = "DELETE FROM Media WHERE lien = ?;";
+			String requete = "DELETE FROM Media WHERE id = ?;";
 			PreparedStatement requeteSt = connexion.prepareStatement(requete);
-			requeteSt.setString(1, lien);
-			requeteSt.executeQuery();
+			requeteSt.setInt(1, idMedia);
+			resultat = requeteSt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return resultat;
 	}
 
 	// ajouter un média
