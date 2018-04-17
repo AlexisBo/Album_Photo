@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import modele_DAO.AlbumDAO;
 import modele_DAO.MediaDAO;
 import modele_DAO.UtilisateurDAO;
+import modele_entity.Media;
 
 @WebServlet("/GestionNavigations")
 public class GestionNavigations extends HttpServlet {
@@ -49,11 +50,31 @@ public class GestionNavigations extends HttpServlet {
 			System.err.println("consulterAccueil: go accueil.jsp");
 		}
 
+		if (operation.equals("profil")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			chemin = "/www/profil.jsp";
+			System.err.println("consulterProfil: go profil.jsp");
+		}
+
 		if(operation.equals("consulterAlbum")) {
 			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
 			request.setAttribute("album", albumDAO.getAlbumById(Integer.parseInt(request.getParameter("album"))));
 			chemin = "/www/album.jsp";
 			System.err.println("consulterAlbum: go album.jsp");
+		}
+
+		if (operation.equals("consulterMedia")) {
+			request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			Media media = mediaDAO.getMediaById(Integer.parseInt(request.getParameter("media")));
+
+			if (media != null) {
+				request.setAttribute("media", media);
+				chemin = "/www/media.jsp";
+				System.err.println("consulterMedia: go media.jsp");
+			} else {
+				request.setAttribute("erreur", "Media non consultable");
+			}
 		}
 		
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);

@@ -27,7 +27,8 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="accueil?idUtilisateur=${utilisateur['id']}"><i
+		<a class="navbar-brand"
+			href="accueil?idUtilisateur=${utilisateur['id']}"><i
 			class="fa d-inline fa-lg fa-cloud"></i> <b>Fotoen</b></a>
 		<div class="collapse navbar-collapse text-center justify-content-end"
 			id="navbar2SupportedContent">
@@ -37,7 +38,7 @@
 					value="${ utilisateur.pseudo }" /></a>
 			<button style="color: white;" onclick="album_show();"
 				class="btn navbar-btn ml-2 text-white btn-secondary material-icons">&#xe2cc;</button>
-			<button style="color: white;" onclick="media_show();"
+			<button style="color: white;"
 				class="btn navbar-btn ml-2 text-white btn-secondary material-icons">&#xe439;</button>
 
 			<a href="deconnexion"
@@ -87,8 +88,7 @@
 								<p class="card-text text-primary" style="font-size: 20px">
 									<c:out value="${album['description']}" />
 								</p>
-								<button id="popup" class="btn btn-primary"
-									onclick="album_show();">Autorisations</button>
+								<button id="popup" class="btn btn-primary">Autorisations</button>
 								<a
 									href="consulterAlbum?idUtilisateur=${utilisateur['id']}&album=${album['id']}"
 									class="btn btn-primary">Consulter</a>
@@ -153,14 +153,14 @@
 				<input class="form-control" type="hidden"
 					value="${utilisateur['id']}" name="idUtilisateur">
 				<div class="form-group">
-					<input type="file" name="media" accept="image/*">
+					<input type="file" name="media">
 				</div>
 				<div class="form-group">
 					<label for="Textarea">Description</label>
 					<textarea class="form-control" name="description" rows="3"
 						placeholder="Ecrivez ici"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">Ajouter</button>
+				<input type="submit" class="btn btn-primary">
 			</form>
 		</div>
 	</div>

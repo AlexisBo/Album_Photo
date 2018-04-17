@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +12,8 @@
 	type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link rel="stylesheet" href="style/profil.css" type="text/css">
+<link rel="stylesheet" href="/Fotoen/www/style/album_listing.css"
+	type="text/css">
 <link rel="stylesheet" href="/Fotoen/www/style/connect_commun.css"
 	type="text/css">
 </head>
@@ -27,7 +27,8 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="accueil?idUtilisateur=${utilisateur['id']}"><i
+		<a class="navbar-brand"
+			href="accueil?idUtilisateur=${utilisateur['id']}"><i
 			class="fa d-inline fa-lg fa-cloud"></i> <b>Fotoen</b></a>
 		<div class="collapse navbar-collapse text-center justify-content-end"
 			id="navbar2SupportedContent">
@@ -45,50 +46,94 @@
 		</div>
 	</div>
 	</nav>
-	<div class="py-5"
-		style="background-image: url(&quot;https://i.pinimg.com/originals/06/f9/0b/06f90b80d39e1aebaeba77cd84c86860.jpg&quot;);">
+	<div class="p-5 text-center bg-secondary text-white">
 		<div class="container">
 			<div class="row">
-				<div class="align-self-center col-md-6 text-white">
-					<h1 class="text-center text-md-left display-3 text-dark">Votre
-						Profil</h1>
-					<p class="lead text-dark">Ici, vous pouvez modifier votre
-						profil.</p>
+				<div class="col-md-12">
+					<h1 class="mb-4">*Titre photo*</h1>
 				</div>
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-body p-5">
-							<h3 class="pb-3">Vos Informations</h3>
-							<form method="post" action="profilUpdate">
-								<div class="form-group">
-									<label>Pseudo</label> <input class="form-control"
-										value="${utilisateur['pseudo']}" name="pseudo">
-								</div>
-								<div class="form-group">
-									<label>Mot de Passe</label> <input type="password" name="mdp"
-									class="form-control" placeholder="Password">
-								</div>
-								<div class="form-group">
-									<label>Confirmation mot de passe</label> <input
-										class="form-control" placeholder="confirmer mot de passe"
-										name="mdpConfirmation" type="password">
-								</div>
-								<div class="form-group">
-									<label>Adresse email</label> <input class="form-control"
-										value="${utilisateur['email']}" name="email">
-								</div>
-								<div class="form-group">
-									<label>Numero de telephone</label> <input class="form-control"
-										value="${utilisateur['telephone']}" name="numero de telephone">
-								</div>
-								<div class="form-group">
-									<label>Date de naissance</label> <input class="form-control"
-										value="${utilisateur['dateNaissance']}" name="dateNaissance">
-								</div>
-								<button type="submit" class="btn mt-2 btn-outline-dark">Modifier</button>
-							</form>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div id="carouselArchitecture" class="carousel slide"
+						data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#carouselArchitecture" data-slide-to="0"
+								class="active"><i></i></li>
+							<li data-target="#carouselArchitecture" data-slide-to="1"><i></i>
+							</li>
+							<li data-target="#carouselArchitecture" data-slide-to="2"><i></i>
+							</li>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<div class="carousel-item active">
+								<img class="d-block img-fluid"
+									src="https://pingendo.github.io/templates/sections/assets/gallery_architecture_1.jpg"
+									data-holder-rendered="true">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block img-fluid"
+									src="https://pingendo.github.io/templates/sections/assets/gallery_architecture_2.jpg"
+									data-holder-rendered="true">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block img-fluid"
+									src="https://pingendo.github.io/templates/sections/assets/gallery_architecture_3.jpg"
+									data-holder-rendered="true">
+							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="py-1 bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="text-center text-light">Commentaire</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-light">1</td>
+							</tr>
+							<tr>
+								<td class="text-white">Thornton</td>
+							</tr>
+							<tr>
+								<td class="text-white">Thornton</td>
+							</tr>
+							<tr>
+								<td class="text-white">Thornton</td>
+							</tr>
+							<tr>
+								<td class="text-white">Thornton</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bg-dark py-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form class="">
+						<div class="form-group text-light">
+							<label>Commentaire <br>
+							</label> <input type="email" class="form-control"
+								placeholder="Ajouter un commentaire"> <small
+								class="form-text text-muted">Donnez votre avis sur cette
+								photo</small>
+						</div>
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+					</form>
+					s
 				</div>
 			</div>
 		</div>
@@ -97,7 +142,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mt-3 text-center">
-					<p>© Copyright 2017 Fotoen - All rights reserved.</p>
+					<p>Â© Copyright 2017 Fotoen - All rights reserved.</p>
 				</div>
 			</div>
 		</div>
@@ -129,7 +174,7 @@
 
 	<div id="popMedia" class="popCSS">
 		<div id="popupForm">
-			<form method="post" action="mediaAjout">
+			<form method="post" action="mediaAjout" enctype="multipart/form-data">
 				<img id="close"
 					src="https://icon-icons.com/icons2/936/PNG/512/cross-mark-on-a-black-circle-background_icon-icons.com_73605.png"
 					width="40px" onclick="media_hide();">

@@ -30,9 +30,42 @@
 	</servlet>
 
 	<servlet>
-		<servlet-name>gestionPhotos</servlet-name>
-		<servlet-class>controleur.GestionPhotos</servlet-class>
+		<servlet-name>gestionMedias</servlet-name>
+		<servlet-class>controleur.GestionMedias</servlet-class>
+        <multipart-config>
+            <location>D:\MIAGE\MIAGE-J2EE-Workspace\Album_Photo\Fotoen\WebContent\WEB-INF\ressources\medias\Temporaire</location> <!-- A adapter chez vous -->
+            <max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+            <max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+            <file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+        </multipart-config>
 	</servlet>
+	
+	
+
+	<servlet-mapping>
+		<servlet-name>gestionNavigations</servlet-name>
+		<url-pattern>/www/accueil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionNavigations</servlet-name>
+		<url-pattern>/www/profil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionNavigations</servlet-name>
+		<url-pattern>/www/consulterAlbum</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionNavigations</servlet-name>
+		<url-pattern>/www/consulterMedia</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/inscription</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>gestionUtilisateur</servlet-name>
@@ -46,17 +79,7 @@
 
 	<servlet-mapping>
 		<servlet-name>gestionUtilisateur</servlet-name>
-		<url-pattern>/www/inscription</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>gestionUtilisateur</servlet-name>
-		<url-pattern>/www/profil</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>gestionUtilisateur</servlet-name>
-		<url-pattern>/www/updateProfil</url-pattern>
+		<url-pattern>/www/profilUpdate</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -75,12 +98,12 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>gestionNavigations</servlet-name>
-		<url-pattern>/www/consulterAlbum</url-pattern>
+		<servlet-name>gestionMedias</servlet-name>
+		<url-pattern>/www/mediaAjout</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>gestionNavigations</servlet-name>
-		<url-pattern>/www/accueil</url-pattern>
+		<servlet-name>gestionMedias</servlet-name>
+		<url-pattern>/www/mediaSuppression</url-pattern>
 	</servlet-mapping>
 </web-app>

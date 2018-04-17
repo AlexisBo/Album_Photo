@@ -37,7 +37,7 @@
 					value="${ utilisateur.pseudo }" /></a>
 			<button style="color: white;" onclick="album_show();"
 				class="btn navbar-btn ml-2 text-white btn-secondary material-icons">&#xe2cc;</button>
-			<button style="color: white;" onclick="media_show();"
+			<button style="color: white;"
 				class="btn navbar-btn ml-2 text-white btn-secondary material-icons">&#xe439;</button>
 
 			<a href="deconnexion"
@@ -49,7 +49,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="mb-4 text-white">Vos Photos</h1>
+					<h1 class="mb-4 text-white">Vos Medias</h1>
 				</div>
 			</div>
 			<div class="row">
