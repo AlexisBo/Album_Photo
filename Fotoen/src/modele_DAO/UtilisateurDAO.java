@@ -146,10 +146,23 @@ public class UtilisateurDAO extends GenericDAO {
 		loadDatabase();
 
 		try {
-			String requete = "DELETE FROM Utilisateur WHERE id = ?;";
-			PreparedStatement requeteSt = connexion.prepareStatement(requete);
-			requeteSt.setInt(1, idUtilisateur);
-			resultat = requeteSt.executeUpdate();
+			PreparedStatement requeteUtilisateur = connexion.prepareStatement("DELETE FROM Utilisateur WHERE id = ?;");
+			requeteUtilisateur.setInt(1, idUtilisateur);
+			PreparedStatement requeteMedia = connexion.prepareStatement("DELETE FROM Media WHERE id_utilisateur = ?;");
+			requeteMedia.setInt(1, idUtilisateur);
+			PreparedStatement requeteViewers = connexion.prepareStatement("DELETE FROM liste_viewers_of_album WHERE id_utilisateur = ?;");
+			requeteViewers.setInt(1, idUtilisateur);
+			PreparedStatement requeteCommentaire = connexion.prepareStatement("DELETE FROM Commentaire WHERE id_utilisateur = ?;");
+			requeteCommentaire.setInt(1, idUtilisateur);
+			PreparedStatement requeteAlbum = connexion.prepareStatement("DELETE FROM Album WHERE id_utilisateur = ?;");
+			requeteAlbum.setInt(1, idUtilisateur);
+
+			requeteMedia.executeUpdate();
+			requeteViewers.executeUpdate();
+			requeteCommentaire.executeUpdate();
+			requeteAlbum.executeUpdate();
+			
+			resultat = requeteUtilisateur.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

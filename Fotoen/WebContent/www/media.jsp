@@ -132,7 +132,6 @@
 						</div>
 						<button type="submit" class="btn btn-primary">Envoyer</button>
 					</form>
-					s
 				</div>
 			</div>
 		</div>
