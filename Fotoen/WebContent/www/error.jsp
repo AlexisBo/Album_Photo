@@ -63,12 +63,13 @@
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-12">
+							+
 							<h1 class="text-light w-100 h-25" style="font-size: 100px">ERREUR...
 								:(</h1>
-							<p class="text-light">
-								<c:out value="${ erreur }" />
-							</p>
 						</div>
+						<p class="text-light" style="text-align: center; margin: auto">
+							<c:out value="${ erreur }" />
+						</p>
 					</div>
 				</div>
 			</div>

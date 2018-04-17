@@ -53,7 +53,7 @@ public class GestionUtilisateur extends HttpServlet {
 				utilisateur = utilisateurDAO.sInscrire(utilisateur);
 
 				if (utilisateur != null) {
-					chemin = "/www/album_listing.jsp";
+					chemin = "/www/accueil.jsp";
 					utilisateur.insertAlbums();
 					File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
 					if (file.mkdir()) {
@@ -96,7 +96,7 @@ public class GestionUtilisateur extends HttpServlet {
 
 			if (utilisateur != null) {
 				request.setAttribute("utilisateur", utilisateur);
-				chemin = "/www/album_listing.jsp";
+				chemin = "/www/accueil.jsp";
 				System.err.println("Connexion: Utilisateur " + utilisateur.getPseudo() + " récupéré");
 			} else {
 				request.setAttribute("utilisateur", null);

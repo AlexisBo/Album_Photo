@@ -67,17 +67,12 @@ public class MediaDAO extends GenericDAO {
 		return medias;
 	}
 
-<<<<<<< HEAD
-	// supprimer un média
-	public int supprimer(int idMedia) {
-		int resultat = 0;
-=======
 	/**
 	 * @brief supprimer un media
 	 * @param lien
 	 */
-	public void supprimer(String lien) {
->>>>>>> 07056af2397b62deade298ce36ac31267ee9d6e3
+	public int supprimer(int idMedia) {
+		int resultat = 0;
 
 		loadDatabase();
 
