@@ -69,10 +69,24 @@ public class GestionUtilisateur extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateur);
 		}
 
+<<<<<<< HEAD
 		if (operation.equals("profilUpdate")) {
 			Utilisateur utilisateur = new Utilisateur(Integer.parseInt(request.getParameter("idUtilisateur")),
 					request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"),
 					request.getParameter("telephone"), this.setDate(request.getParameter("dateNaissance")));
+=======
+		// Visualisation du profil
+		if (operation.equals("profil")) {
+			request.setAttribute("utilisateur",
+					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			chemin = "/www/profil.jsp";
+			System.err.println("consulterProfil: go album.jsp");
+		}
+		
+		// Update du profil
+		if (operation.equals("updateProfil")) {
+			Utilisateur utilisateur = new Utilisateur(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"), request.getParameter("telephone"), this.setDate(request));
+>>>>>>> 5870a00429b060c7cbab3b602c16bca993f521dc
 			if (utilisateurDAO.sUpdate(utilisateur) != 0) {
 				chemin = "/www/profil.jsp";
 				System.err.println("Modification profil: Utilisateur " + utilisateur.getPseudo() + " modifié");

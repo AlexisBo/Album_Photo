@@ -23,6 +23,10 @@ public class Media {
 		setMedia(lien, description, idUtilisateur, idAlbum);
 	}
 
+	/**
+	 * @param lien, description, idUtilisateur, idAlbum
+	 *            the lien, description, idUtilisateur, idAlbum to set
+	 */
 	private void setMedia(String lien, String description, int idUtilisateur, int idAlbum) {
 		this.lien = lien;
 		this.description = description;
@@ -31,50 +35,92 @@ public class Media {
 		this.commentaires = new ArrayList<>();
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 *            the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return lien
+	 */
 	public String getLien() {
 		return this.lien;
 	}
 
+	/**
+	 * @param lien
+	 *            the lien to set
+	 */
 	public void setLien(String lien) {
 		this.lien = lien;
 	}
 
+	/**
+	 * @return description
+	 */
 	public String getDescription() {
 		return this.description;
 	}
 
+	/**
+	 * @param description
+	 *            the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return idUtilisateur
+	 */
 	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
+	/**
+	 * @param idUtilisateur
+	 *            the idUtilisateur to set
+	 */
 	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 
+	/**
+	 * @return idAlbum
+	 */
 	public int getIdAlbum() {
 		return idAlbum;
 	}
 
+	/**
+	 * @param idAlbum
+	 *            the idAlbum to set
+	 */
 	public void setIdAlbum(int idAlbum) {
 		this.idAlbum = idAlbum;
 	}
 
+	/**
+	 * @return ListCommentaires
+	 */
 	public List<Commentaire> getCommentaires() {
 		return new CommentaireDAO().getCommentairesByMedia(id);
 	}
 
+	/**
+	 * @param List Commentaire
+	 *            the List Commentaire to set
+	 */
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}

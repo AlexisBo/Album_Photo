@@ -30,6 +30,10 @@ public class Utilisateur implements Observer {
 		this.setUtilisateur(pseudo, email, mdp, telephone, dateNaissance);
 	}
 
+	/**
+	 * @param pseudo, email, mdp, telephone, dateNaissance
+	 *            the pseudo, email, mdp, telephone, dateNaissance to set
+	 */
 	private void setUtilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance) {
 		this.pseudo = pseudo;
 		this.email = email;
@@ -57,7 +61,7 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @return the id
+	 * @return id
 	 */
 	public int getId() {
 		return id;
@@ -72,7 +76,7 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @return the pseudo
+	 * @return pseudo
 	 */
 	public String getPseudo() {
 		return pseudo;
@@ -87,7 +91,7 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @return the email
+	 * @return email
 	 */
 	public String getEmail() {
 		return email;
@@ -102,7 +106,7 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @return the mdp
+	 * @return mdp
 	 */
 	public String getMdp() {
 		return mdp;
@@ -116,26 +120,47 @@ public class Utilisateur implements Observer {
 		this.mdp = mdp;
 	}
 
+	/**
+	 * @return telephone
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
+	/**
+	 * @param telphone
+	 *            the telephone to set
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * @return dateNaissance
+	 */
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
 
+	/**
+	 * @param dateNaissance
+	 *            the dateNaissance to set
+	 */
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
+	/**
+	 * @return List Album
+	 */
 	public List<Album> getAlbums() {
 		return new AlbumDAO().getAlbums(id);
 	}
 
+	/**
+	 * @param List Albums
+	 *            the List Albums to set
+	 */
 	public void setAlbums(List<Album> albums) {
 		this.albums = albums;
 	}
@@ -149,10 +174,17 @@ public class Utilisateur implements Observer {
 		}
 	}
 
+	/**
+	 * @return List Commentaire
+	 */
 	public List<Commentaire> getCommentaires() {
 		return new CommentaireDAO().getCommentairesByUtilisateur(id);
 	}
 
+	/**
+	 * @param commentaire
+	 *            the commentaire to set
+	 */
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}
