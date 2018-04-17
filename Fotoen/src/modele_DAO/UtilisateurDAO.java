@@ -13,7 +13,11 @@ public class UtilisateurDAO extends GenericDAO {
 
 	}
 
-	//récupérer user
+	/**
+	 * @param id
+	 * 
+	 * @return l'utilisateur qui est connecté
+	 */
 	public Utilisateur getUtilisateurById(int id) {
 		Utilisateur utilisateur = null;
 
@@ -65,7 +69,10 @@ public class UtilisateurDAO extends GenericDAO {
 		return utilisateur;
 	}
 
-	//inscription user
+	/**
+	 * @brief Prendre en compte une inscription
+	 * @param utilisateur
+	 */
 	public Utilisateur sInscrire(Utilisateur utilisateur) {
 		loadDatabase();
 
@@ -99,7 +106,11 @@ public class UtilisateurDAO extends GenericDAO {
 	}
 
 
-	//update user
+	/**
+	 * @brief Prendre en compte une modification sur le profil de l'utilisateur
+	 * @param utilisateur
+	 * @return vrai si l'utilisateur a bien été update
+	 */
 	public int sUpdate(Utilisateur utilisateur) {
 		int resultat = 0;
 		

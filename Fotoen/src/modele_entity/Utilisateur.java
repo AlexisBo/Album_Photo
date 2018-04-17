@@ -31,8 +31,11 @@ public class Utilisateur implements Observer {
 	}
 
 	/**
-	 * @param pseudo, email, mdp, telephone, dateNaissance
-	 *            the pseudo, email, mdp, telephone, dateNaissance to set
+	 * @param pseudo
+	 * @param email
+	 * @param mdp
+	 * @param telephone
+	 * @param dateNaissance
 	 */
 	private void setUtilisateur(String pseudo, String email, String mdp, String telephone, Date dateNaissance) {
 		this.pseudo = pseudo;
