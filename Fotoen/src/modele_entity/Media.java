@@ -24,8 +24,10 @@ public class Media {
 	}
 
 	/**
-	 * @param lien, description, idUtilisateur, idAlbum
-	 *            the lien, description, idUtilisateur, idAlbum to set
+	 * @param lien
+	 * @param description
+	 * @param idUtilisateur
+	 * @param idAlbum
 	 */
 	private void setMedia(String lien, String description, int idUtilisateur, int idAlbum) {
 		this.lien = lien;

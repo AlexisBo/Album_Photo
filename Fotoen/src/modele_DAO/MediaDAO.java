@@ -14,7 +14,11 @@ public class MediaDAO extends GenericDAO {
 
 	}
 
-	// récupérer les médias d'un user
+	/**
+	 * @brief récupère le media selon l'id 
+	 * @param idMedia
+	 * @return media
+	 */
 	public Media getMediaById(int idMedia) {
 		Media media = null;
 
@@ -37,7 +41,11 @@ public class MediaDAO extends GenericDAO {
 		return media;
 	}
 
-	// récupérer liste média
+	/**
+	 * @brief récupère les medias d'un album
+	 * @param idAlbum
+	 * @return medias
+	 */
 	public List<Media> getMediasByAlbum(int idAlbum) {
 		List<Media> medias = new ArrayList<Media>();
 
@@ -59,7 +67,10 @@ public class MediaDAO extends GenericDAO {
 		return medias;
 	}
 
-	// supprimer un média
+	/**
+	 * @brief supprimer un media
+	 * @param lien
+	 */
 	public void supprimer(String lien) {
 
 		loadDatabase();
@@ -74,7 +85,11 @@ public class MediaDAO extends GenericDAO {
 		}
 	}
 
-	// ajouter un média
+	/**
+	 * @brief ajouter un media
+	 * @param media
+	 * @return le media ajouté
+	 */
 	public int insert(Media media) {
 		int resultat = 0;
 

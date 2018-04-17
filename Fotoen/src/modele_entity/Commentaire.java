@@ -22,8 +22,10 @@ public class Commentaire {
 	}
 
 	/**
-	 * @param commentaire, evaluation, idUtilisateur, idMedia
-	 *            the commentaire, evaluation, idUtilisateur, idMedia to set
+	 * @param commentaire
+	 * @param evaluation
+	 * @param idUtilisateur
+	 * @param idMedia
 	 */
 	private void setCommentaire(String commentaire, int evaluation, int idUtilisateur, int idMedia) {
 		this.commentaire = commentaire;

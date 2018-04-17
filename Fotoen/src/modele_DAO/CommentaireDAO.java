@@ -14,7 +14,11 @@ public class CommentaireDAO extends GenericDAO {
 
 	}
 	
-	//récupérer les commentaire d'un user
+	/**
+	 * @brief récupérer tout les commentaires d'un utilisateur
+	 * @param idUtilisateur
+	 * @return commentaire
+	 */
 	public List<Commentaire> getCommentairesByUtilisateur(int idUtilisateur){
 		List<Commentaire> commentaires = new ArrayList<Commentaire>();
 
@@ -35,7 +39,11 @@ public class CommentaireDAO extends GenericDAO {
 		return commentaires;
 	}
 	
-	//récupérer les commentaire d'un média
+	/**
+	 * @brief récupérer tout les commentaires d'un media
+	 * @param idMedia
+	 * @return commentaire
+	 */
 	public List<Commentaire> getCommentairesByMedia(int idMedia){
 		List<Commentaire> commentaires = new ArrayList<Commentaire>();
 

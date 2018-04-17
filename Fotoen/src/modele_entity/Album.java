@@ -28,8 +28,11 @@ public class Album extends Observable {
 	}
 	
 	/**
-	 * @param nom, description, idAdmin, courant, date
-	 *            the nom, description, idAdmin, courant, date to set
+	 * @param nom
+	 * @param description
+	 * @param courant
+	 * @param date
+	 * @param idAdmin 
 	 */
 	private void setAlbum(String nom, String description, int idAdmin, boolean courant, Date date) {
 		this.nom = nom;

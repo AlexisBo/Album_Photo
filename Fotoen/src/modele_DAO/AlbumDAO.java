@@ -15,6 +15,11 @@ public class AlbumDAO extends GenericDAO {
 
 	}
 
+	/**
+	 * @brief récupère l'album' selon l'id 
+	 * @param idAlbum
+	 * @return album
+	 */
 	public Album getAlbumById(int idAlbum) {
 	//récupérer album par id
 		Album album = null;
@@ -38,6 +43,11 @@ public class AlbumDAO extends GenericDAO {
 		return album;
 	}
 
+	/**
+	 * @brief récupère l'album courant
+	 * @param idUtilisateur
+	 * @return album
+	 */
 	public Album getAlbumCurrent(int idUtilisateur) {
 	//récupérer album courrant
 		Album album = null;
@@ -62,6 +72,10 @@ public class AlbumDAO extends GenericDAO {
 	}
 
 
+	/**
+	 * @brief supprimer un album
+	 * @param idAlbum
+	 */
 	public int supprimer(int idAlbum) {
 	//supprimer album
 		int resultat = 0;
@@ -79,7 +93,11 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
-
+	/**
+	 * @brief définir un album courant
+	 * @param idUtilisateur
+	 * @param idAlbum
+	 */
 	public int setCourant(int idUtilisateur, int idAlbum) {
 	//définir album courant
 		int resultat = 0;
@@ -103,7 +121,11 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
-	//récupérer liste album par user
+	/**
+	 * @brief récupérer la liste des albums de l'utilisateur
+	 * @param idAdmin
+	 * @return albums
+	 */
 	public List<Album> getAlbums(int idAdmin) {
 		List<Album> albums = new ArrayList<Album>();
 
@@ -125,7 +147,10 @@ public class AlbumDAO extends GenericDAO {
 		return albums;
 	}
 
-	//ajouter album
+	/**
+	 * @brief ajouter un album
+	 * @param album
+	 */
 	public int insert(Album album) {
 		int resultat = 0;
 
@@ -158,6 +183,12 @@ public class AlbumDAO extends GenericDAO {
 		return resultat;
 	}
 
+	/**
+	 * @brief récupérer la liste des "viewers" d'un album
+	 * @param idAlbum
+	 * @param idAdmin
+	 * @return utilisateurs
+	 */
 	public List<Utilisateur> getViewersByAlbum(int idAlbum, int idAdmin) {
 		List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 
