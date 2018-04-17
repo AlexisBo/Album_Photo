@@ -88,6 +88,11 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
+		<servlet-name>gestionUtilisateur</servlet-name>
+		<url-pattern>/www/utilisateurSuppression</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
 		<servlet-name>gestionAlbums</servlet-name>
 		<url-pattern>/www/albumAjout</url-pattern>
 	</servlet-mapping>

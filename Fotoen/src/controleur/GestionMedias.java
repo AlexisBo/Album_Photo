@@ -68,22 +68,25 @@ public class GestionMedias extends HttpServlet {
 				chemin = "/www/media.jsp";
 				System.err.println("mediaAjout: Media " + media.getLien() + " ajouté");
 			} else {
-				request.setAttribute("utilisateur", null);
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Media non valide");
 			}
 		}
 
 		// Suppression d'une photo
 		if (operation.equals("mediaSuppression")) {
+			Utilisateur utilisateur = utilisateurDAO
+					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
 
 			if (mediaDAO.supprimer(Integer.parseInt(request.getParameter("media"))) != 0) {
 				chemin = "/www/album_listing.jsp";
-				System.err.println("mediaSuppression " + request.getParameter("mediaSuppression") + " ajoutÃ©");
+				System.err.println("mediaSuppression " + request.getParameter("mediaSuppression") + " ajouté");
 			} else {
-				request.setAttribute("erreur", "MÃ©dia non supprimÃ©");
+				request.setAttribute("utilisateur", utilisateur);
+				request.setAttribute("erreur", "Media non supprimé");
 			}
 
-			System.err.println("mediaSuppression data value" + request.getParameter("data-value") + " ajoutÃ©");
+			System.err.println("mediaSuppression data value" + request.getParameter("data-value") + " ajouté");
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);

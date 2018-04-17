@@ -105,7 +105,6 @@ public class UtilisateurDAO extends GenericDAO {
 		return null;
 	}
 
-
 	/**
 	 * @brief Prendre en compte une modification sur le profil de l'utilisateur
 	 * @param utilisateur
@@ -133,6 +132,27 @@ public class UtilisateurDAO extends GenericDAO {
 			e.printStackTrace();
 		}
 		
+		return resultat;
+	}
+
+	/**
+	 * @brief supprimer un utilisateur
+	 * @param idUtilisateur
+	 */
+	public int supprimer(int idUtilisateur) {
+	//supprimer utilisateur
+		int resultat = 0;
+
+		loadDatabase();
+
+		try {
+			String requete = "DELETE FROM Utilisateur WHERE id = ?;";
+			PreparedStatement requeteSt = connexion.prepareStatement(requete);
+			requeteSt.setInt(1, idUtilisateur);
+			resultat = requeteSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return resultat;
 	}
 }

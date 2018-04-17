@@ -12,6 +12,7 @@ import modele_DAO.AlbumDAO;
 import modele_DAO.MediaDAO;
 import modele_DAO.UtilisateurDAO;
 import modele_entity.Media;
+import modele_entity.Utilisateur;
 
 @WebServlet("/GestionNavigations")
 public class GestionNavigations extends HttpServlet {
@@ -74,8 +75,8 @@ public class GestionNavigations extends HttpServlet {
 		}
 
 		if (operation.equals("consulterMedia")) {
-			request.setAttribute("utilisateur",
-					utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+			Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
+			request.setAttribute("utilisateur", utilisateur);
 			Media media = mediaDAO.getMediaById(Integer.parseInt(request.getParameter("media")));
 
 			if (media != null) {
@@ -83,6 +84,7 @@ public class GestionNavigations extends HttpServlet {
 				chemin = "/www/media.jsp";
 				System.err.println("consulterMedia: go media.jsp");
 			} else {
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Media non consultable");
 			}
 		}

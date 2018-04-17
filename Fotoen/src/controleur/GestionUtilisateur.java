@@ -84,7 +84,7 @@ public class GestionUtilisateur extends HttpServlet {
 					request.setAttribute("erreur", "Profil non modifié");
 				}
 			} else {
-				request.setAttribute("utilisateur", null);
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Mot de passe non valide");
 			}
 		}
@@ -108,6 +108,20 @@ public class GestionUtilisateur extends HttpServlet {
 		if (operation.equals("deconnexion")) {
 			chemin = "/www/index.jsp";
 			request.setAttribute("utilisateur", null);
+		}
+
+		if (operation.equals("utilisateurSuppression")) {
+			Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
+			File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo());
+			if (utilisateurDAO.supprimer(Integer.parseInt(request.getParameter("idUtilisateur"))) != 0) {
+				file.delete();
+				chemin = "/www/index.jsp";
+				request.setAttribute("utilisateur", null);
+				System.err.println("utilisateurSuppression: Utilisateur " + utilisateur.getPseudo() + " supprimé");
+			} else {
+				request.setAttribute("utilisateur", utilisateur);
+				request.setAttribute("erreur", "Album non supprimé");
+			}
 		}
 
 		this.getServletContext().getRequestDispatcher(chemin).forward(request, response);

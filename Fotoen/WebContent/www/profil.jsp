@@ -91,6 +91,14 @@
 								<button type="submit" class="btn mt-2 btn-outline-dark">Modifier</button>
 							</form>
 						</div>
+						<div class="card-body p-5">
+							<h3 class="pb-3">Vos Informations</h3>
+							<form method="post" action="utilisateurSuppression">
+								<input class="form-control" type="hidden"
+									value="${utilisateur['id']}" name="idUtilisateur">
+								<button type="submit" class="btn mt-2 btn-outline-dark">Modifier</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

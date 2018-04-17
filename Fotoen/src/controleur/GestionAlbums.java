@@ -36,7 +36,7 @@ public class GestionAlbums extends HttpServlet {
 		traitement(request, response);
 	}
 
-	//traite les différentes actions exercées sur la vue (suppréssion, ajout, ...)
+	// traite les différentes actions exercées sur la vue (suppréssion, ajout, ...)
 	public void traitement(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -46,45 +46,53 @@ public class GestionAlbums extends HttpServlet {
 
 		// Ajout d'un album
 		if (operation.equals("albumAjout")) {
+			Utilisateur utilisateur = utilisateurDAO
+					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
 			Album album = new Album(request.getParameter("titre"), request.getParameter("description"),
 					Integer.parseInt(request.getParameter("idUtilisateur")), false,
 					new Date(new java.util.Date().getTime()));
 
 			if (albumDAO.insert(album) != 0) {
-				Utilisateur utilisateur = utilisateurDAO
-						.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
-				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + album.getNom());
+				File file = new File(
+						GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + album.getNom());
 				file.mkdir();
 				request.setAttribute("utilisateur", utilisateur);
 				chemin = "/www/album_listing.jsp";
 				System.err.println("AjoutAlbum: Album " + album.getNom() + " ajouté");
 			} else {
-				request.setAttribute("utilisateur", null);
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Album non valide");
 			}
 		}
 
 		if (operation.equals("albumCourant")) {
-			System.err.println("album courant recup: " + request.getParameter("album"));
+			Utilisateur utilisateur = utilisateurDAO
+					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
 
-			if (albumDAO.setCourant(Integer.parseInt(request.getParameter("idUtilisateur")), Integer.parseInt(request.getParameter("album"))) != 0) {
+			if (albumDAO.setCourant(Integer.parseInt(request.getParameter("idUtilisateur")),
+					Integer.parseInt(request.getParameter("album"))) != 0) {
 				chemin = "/www/album_listing.jsp";
-				request.setAttribute("utilisateur", utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur"))));
+				request.setAttribute("utilisateur", utilisateur);
 				System.err.println("AlbumCourant: Album " + request.getParameter("album") + " courant");
 			} else {
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Album courant non modifié");
 			}
 		}
 
 		if (operation.equals("albumSuppression")) {
+			Utilisateur utilisateur = utilisateurDAO
+					.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
+
 			if (albumDAO.supprimer(Integer.parseInt(request.getParameter("album"))) != 0) {
-				Utilisateur utilisateur = utilisateurDAO.getUtilisateurById(Integer.parseInt(request.getParameter("idUtilisateur")));
-				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\" + request.getParameter("album"));
+				File file = new File(GenericDAO.MEDIAS_CHEMIN_ABSOLUE + utilisateur.getPseudo() + "\\"
+						+ request.getParameter("album"));
 				file.delete();
 				chemin = "/www/album_listing.jsp";
 				request.setAttribute("utilisateur", utilisateur);
 				System.err.println("albumSuppression: Album " + request.getParameter("album") + " supprimé");
 			} else {
+				request.setAttribute("utilisateur", utilisateur);
 				request.setAttribute("erreur", "Album non supprimé");
 			}
 		}
