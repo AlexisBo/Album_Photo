@@ -72,6 +72,7 @@ public class GestionUtilisateur extends HttpServlet {
 			System.err.println("consulterProfil: go album.jsp");
 		}
 		
+		// Update du profil
 		if (operation.equals("updateProfil")) {
 			Utilisateur utilisateur = new Utilisateur(Integer.parseInt(request.getParameter("idUtilisateur")), request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("mdp"), request.getParameter("telephone"), this.setDate(request));
 			if (utilisateurDAO.sUpdate(utilisateur) != 0) {
